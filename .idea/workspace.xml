@@ -5,94 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd4018d7-7c80-47c4-b162-d42463a104d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/CatalogServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/abstracts/BrandService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/abstracts/CategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/abstracts/ProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/BrandManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/CategoryManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/ProductManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/request/create/CreateBrandRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/request/create/CreateCategoryRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/request/create/CreateProductRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/request/update/UpdateBrandRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/request/update/UpdateCategoryRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/request/update/UpdateProductRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/response/create/CreateBrandResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/response/create/CreateCategoryResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/response/create/CreateProductResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/response/get/GetAllBrandsResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/response/get/GetAllCategoriesResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/response/get/GetAllProductsResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/response/get/GetBrandResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/response/get/GetCategoryResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/response/get/GetProductResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/response/update/UpdateBrandResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/response/update/UpdateCategoryResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/response/update/UpdateProductResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/rules/BrandBusinessRules.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/rules/CategoryBusinessRules.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/rules/ProductBusinessRules.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/controllers/BrandsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/controllers/CategoriesController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/controllers/ProductsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/entities/Brand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/entities/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/entities/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/repository/BrandRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/repository/CategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/repository/ProductRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog-service/src/test/java/nurdanemin/catalogservice/CatalogServiceApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/CommonPackageApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/configuration/exceptions/RestExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/configuration/mappers/ModelMapperConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/constants/ExceptionTypes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/constants/Paths.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/constants/Regex.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/exceptions/BusinessException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/mappers/ModelMapperManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/mappers/ModelMapperService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/results/ExceptionResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/src/test/java/nurdanemin/commonpackage/CommonPackageApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/discovery-server/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/discovery-server/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/discovery-server/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/discovery-server/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/discovery-server/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/discovery-server/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/discovery-server/src/main/java/nurdanemin/discoveryserver/DiscoveryServerApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/discovery-server/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/discovery-server/src/test/java/nurdanemin/discoveryserver/DiscoveryServerApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ecommerce-microservice.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/filter-service/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/filter-service/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/filter-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/filter-service/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/filter-service/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/filter-service/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/filter-service/src/main/java/nurdanemin/filterservice/FilterServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/filter-service/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/filter-service/src/test/java/nurdanemin/filterservice/FilterServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +20,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/discovery-server" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -129,26 +42,31 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "jdk.selected.JAVA_MODULE": "19",
-    "last_opened_file_path": "/Users/nurdanemin/IdeaProjects/ecommerce-microservice",
+    "last_opened_file_path": "/Users/nurdanemin/IdeaProjects/ecommerce-microservice/catalog-service/src/main/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/catalog-service/src/main/resources" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/discovery-server/src/main/resources" />
       <recent name="$PROJECT_DIR$/discovery-server" />
       <recent name="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice" />
-      <recent name="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="nurdanemin.catalogservice.entities" />
@@ -161,7 +79,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.CatalogServiceApplication">
+  <component name="RunManager" selected="Spring Boot.DiscoveryServerApplication">
     <configuration name="CatalogServiceApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="inventory-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="nurdanemin.catalogservice.CatalogServiceApplication" />
@@ -213,7 +131,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684270992885</updated>
-      <workItem from="1684270996171" duration="1269000" />
+      <workItem from="1684270996171" duration="2448000" />
     </task>
     <servers />
   </component>
