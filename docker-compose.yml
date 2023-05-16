@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  kafka:
+    platform: linux/amd64
+    container_name: kafka-ecommerce
+    image: bashj79/kafka-kraft
+    ports:
+      - "9092:9092"
+    volumes:
+      - kafka_data:/opt/kafka/kafka-logs
+
+  mongodb:
+    platform: linux/amd64
+    container_name: ecommerce-filterdb
+    image:
+      mongo:4.4.6
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  kafka_data:
+  mongodb_data:
