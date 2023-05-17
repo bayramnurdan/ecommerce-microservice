@@ -9,10 +9,12 @@ import nurdanemin.catalogservice.business.dto.response.create.CreateProductRespo
 import nurdanemin.catalogservice.business.dto.response.get.GetAllProductsResponse;
 import nurdanemin.catalogservice.business.dto.response.get.GetProductResponse;
 import nurdanemin.catalogservice.business.dto.response.update.UpdateProductResponse;
+import nurdanemin.catalogservice.business.kafka.producer.CatalogProducer;
 import nurdanemin.catalogservice.business.rules.ProductBusinessRules;
 import nurdanemin.catalogservice.entities.Category;
 import nurdanemin.catalogservice.entities.Product;
 import nurdanemin.catalogservice.repository.ProductRepository;
+import nurdanemin.commonpackage.events.catalog.ProductCreatedEvent;
 import nurdanemin.commonpackage.utils.mappers.ModelMapperService;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,7 @@ public class ProductManager implements ProductService {
     private final ModelMapperService mapper;
     private final ProductBusinessRules rules;
     private final CategoryService categoryService;
+    private final CatalogProducer producer;
     @Override
     public List<GetAllProductsResponse> getAll() {
         var products = repository.findAll();
@@ -39,8 +42,9 @@ public class ProductManager implements ProductService {
     @Override
     public GetProductResponse getById(UUID id) {
         rules.checkIfProductExists(id);
-       var product = repository.findById(id);
+       var product = repository.findById(id).orElseThrow();
        var response = mapper.forResponse().map(product, GetProductResponse.class);
+       response.setCategoryIds(mapCategoriesToIdList(product));
        return response;
     }
 
@@ -51,6 +55,7 @@ public class ProductManager implements ProductService {
        product.setId(UUID.randomUUID());
        product.setCategories(categoryService.getCategoriesAsList(request.getCategoryIds()));
        var createdProduct = repository.save(product);
+       sendKafkaProductCreatedEvent(createdProduct);
        categoryService.addProductForCategories(createdProduct, mapCategoriesToIdList(product));
        var response = mapper.forResponse().map(createdProduct, CreateProductResponse.class);
        response.setCategoryIds(mapCategoriesToIdList(createdProduct));
@@ -80,5 +85,21 @@ public class ProductManager implements ProductService {
             ids.add(category.getId());
         }
         return ids;
+    }
+    private List<String> mapCategoriesToNameList(Product product){
+        List<String> names = new ArrayList<>();
+        for(Category category: product.getCategories()){
+            names.add(category.getName());
+        }
+        return names;
+    }
+
+
+
+    private void sendKafkaProductCreatedEvent(Product createdProduct) {
+        var event = mapper.forResponse().map(createdProduct, ProductCreatedEvent.class);
+        event.setCategoryIds(mapCategoriesToIdList(createdProduct));
+        event.setCategoryNames(mapCategoriesToNameList(createdProduct));
+        producer.sendMessage(event);
     }
 }

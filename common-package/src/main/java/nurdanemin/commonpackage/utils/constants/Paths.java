@@ -6,4 +6,9 @@ public class Paths {
     public static class Catalog{
         public static final String ServiceBasePackage = "nurdanemin.catalogservice";
     }
+
+    public static class Filter{
+        public static final String ServiceBasePackage = "nurdanemin.filterservice";
+
+    }
 }

@@ -1,21 +1,11 @@
 spring:
   application:
-    name: catalog-service
-  datasource:
-    username: postgres
-    password: '12345'
-    url: jdbc:postgresql://localhost:5432/catalogdb-dev
-  jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-    hibernate:
-      ddl-auto: update
+    name: filter-service
+  data:
+    mongodb:
+      database: filterdb-ecommerce
+      uri: mongodb://localhost:27017
   kafka:
-    producer:
-      bootstrap-servers: http://localhost:9092
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     consumer:
       auto-offset-reset: earliest
       bootstrap-servers: http://localhost:9092
@@ -37,4 +27,3 @@ eureka:
     prefer-ip-address: true
 server:
   port: 0
-
