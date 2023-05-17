@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd4018d7-7c80-47c4-b162-d42463a104d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/filter-service/src/main/java/nurdanemin/filterservice/business/kafka/consumer/CatalogConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/filter-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/filter-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/filter-service/src/main/java/nurdanemin/filterservice/FilterServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/filter-service/src/main/java/nurdanemin/filterservice/FilterServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/filter-service/src/main/resources/application.properties" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +163,7 @@
       <workItem from="1684311484042" duration="442000" />
       <workItem from="1684312436825" duration="4032000" />
       <workItem from="1684317019029" duration="1502000" />
-      <workItem from="1684318948208" duration="3745000" />
+      <workItem from="1684318948208" duration="8846000" />
     </task>
     <servers />
   </component>
