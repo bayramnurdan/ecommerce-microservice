@@ -8,7 +8,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ProductCreatedEvent {
+public class ProductCreatedEvent implements Event {
     private UUID productId;
     private String productName;
     private UUID brandId;

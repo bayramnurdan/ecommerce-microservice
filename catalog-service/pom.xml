@@ -11,8 +11,8 @@
     <groupId>nurdanemin</groupId>
     <artifactId>catalog-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>inventory-service</name>
-    <description>This is a inventory service for microservice project.</description>
+    <name>catalog-service</name>
+    <description>This is a catalog service for microservice project.</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -32,6 +32,8 @@
             <artifactId>common-package</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+
     </dependencies>
 
     <build>

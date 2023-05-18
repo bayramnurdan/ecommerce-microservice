@@ -9,12 +9,12 @@ import nurdanemin.catalogservice.business.dto.response.create.CreateProductRespo
 import nurdanemin.catalogservice.business.dto.response.get.GetAllProductsResponse;
 import nurdanemin.catalogservice.business.dto.response.get.GetProductResponse;
 import nurdanemin.catalogservice.business.dto.response.update.UpdateProductResponse;
-import nurdanemin.catalogservice.business.kafka.producer.CatalogProducer;
 import nurdanemin.catalogservice.business.rules.ProductBusinessRules;
 import nurdanemin.catalogservice.entities.Category;
 import nurdanemin.catalogservice.entities.Product;
 import nurdanemin.catalogservice.repository.ProductRepository;
 import nurdanemin.commonpackage.events.catalog.ProductCreatedEvent;
+import nurdanemin.commonpackage.kafka.producer.KafkaProducer;
 import nurdanemin.commonpackage.utils.mappers.ModelMapperService;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +28,7 @@ public class ProductManager implements ProductService {
     private final ModelMapperService mapper;
     private final ProductBusinessRules rules;
     private final CategoryService categoryService;
-    private final CatalogProducer producer;
+    private final KafkaProducer producer;
     @Override
     public List<GetAllProductsResponse> getAll() {
         var products = repository.findAll();
@@ -100,6 +100,6 @@ public class ProductManager implements ProductService {
         var event = mapper.forResponse().map(createdProduct, ProductCreatedEvent.class);
         event.setCategoryIds(mapCategoriesToIdList(createdProduct));
         event.setCategoryNames(mapCategoriesToNameList(createdProduct));
-        producer.sendMessage(event);
+        producer.sendMessage(event, "product-created");
     }
 }
