@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/api-getway/pom.xml" />
         <option value="$PROJECT_DIR$/common-package/pom.xml" />
         <option value="$PROJECT_DIR$/catalog-service/pom.xml" />
+        <option value="$PROJECT_DIR$/user-service/pom.xml" />
       </list>
     </option>
   </component>
