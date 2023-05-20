@@ -1,6 +1,7 @@
 package nurdanemin.commonpackage.events.catalog;
 
 import lombok.*;
+import nurdanemin.commonpackage.events.Event;
 
 import java.util.List;
 import java.util.UUID;
