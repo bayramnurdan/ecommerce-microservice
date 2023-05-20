@@ -52,6 +52,8 @@
       <change afterPath="$PROJECT_DIR$/shipping-service/mvnw.cmd" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/shipping-service/pom.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/ShippingServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/entities/Shipping.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/entities/ShippingStatus.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/shipping-service/src/main/resources/application.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/shipping-service/src/test/java/nurdanemin/shippingservice/ShippingServiceApplicationTests.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/user-service/.gitignore" afterDir="false" />
@@ -66,9 +68,6 @@
       <change afterPath="$PROJECT_DIR$/user-service/src/main/java/nurdanemin/userservice/entities/enums/Role.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/user-service/src/test/java/nurdanemin/userservice/UserServiceApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +84,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/cart-service" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/shipping-service" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -264,7 +263,7 @@
       <workItem from="1684317019029" duration="1502000" />
       <workItem from="1684318948208" duration="8846000" />
       <workItem from="1684403725711" duration="8390000" />
-      <workItem from="1684512754796" duration="3607000" />
+      <workItem from="1684512754796" duration="4332000" />
     </task>
     <servers />
   </component>
