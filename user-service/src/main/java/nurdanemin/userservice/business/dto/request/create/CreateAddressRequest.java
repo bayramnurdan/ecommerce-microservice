@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -21,4 +23,8 @@ public class CreateAddressRequest {
     private String district;
     @NotBlank
     private String city;
+    @NotBlank
+    private String country = "Türkiye";
+
+    private UUID userId = null;
 }

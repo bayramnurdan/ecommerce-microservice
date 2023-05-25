@@ -24,7 +24,6 @@ public class CartItem {
     private UUID productId;
     private String productName;
     private int productQuantity;
-    private double totalPrice;
     private  double pricePerUnit;
 
 

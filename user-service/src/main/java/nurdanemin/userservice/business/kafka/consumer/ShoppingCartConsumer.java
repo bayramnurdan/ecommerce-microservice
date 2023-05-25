@@ -17,11 +17,11 @@ public class ShoppingCartConsumer {
     private final ModelMapperService mapper;
 
     @KafkaListener(
-            topics = "shopping-cart-created",
-            groupId = "shopping-cart-create"
+            topics = "shopping-cart-for-user-created",
+            groupId = "shopping-cart-for-user-create"
     )
     public void consume(ShoppingCartCreatedEvent event) {
         service.addCartForUser(event.getUserId(), event.getCartId());
-        log.info("Product created event consumed {}", event);
+        log.info("Shopping cart for user  created event consumed {}", event);
     }
 }

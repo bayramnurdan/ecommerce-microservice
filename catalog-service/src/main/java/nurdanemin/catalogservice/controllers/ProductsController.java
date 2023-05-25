@@ -9,6 +9,8 @@ import nurdanemin.catalogservice.business.dto.response.create.CreateProductRespo
 import nurdanemin.catalogservice.business.dto.response.get.GetAllProductsResponse;
 import nurdanemin.catalogservice.business.dto.response.get.GetProductResponse;
 import nurdanemin.catalogservice.business.dto.response.update.UpdateProductResponse;
+import nurdanemin.commonpackage.utils.dto.ProductClientResponse;
+import org.apache.kafka.clients.ClientResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +31,11 @@ public class ProductsController {
         return service.getById(id);
 
     }
+    @GetMapping(value = "/api/products/product-price/{productId}")
+    public ProductClientResponse getProductPrice(@PathVariable UUID productId){
+        return service.getProductPrice(productId);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public CreateProductResponse create(@Valid @RequestBody CreateProductRequest request){

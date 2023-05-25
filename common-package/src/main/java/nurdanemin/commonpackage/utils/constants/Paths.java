@@ -11,4 +11,12 @@ public class Paths {
         public static final String ServiceBasePackage = "nurdanemin.filterservice";
 
     }
+    public static class Cart{
+        public static final String ServiceBasePackage = "nurdanemin.cartservice";
+
+    }
+    public static class User{
+        public static final String ServiceBasePackage = "nurdanemin.userservice";
+
+    }
 }

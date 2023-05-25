@@ -15,6 +15,8 @@ import nurdanemin.catalogservice.entities.Product;
 import nurdanemin.catalogservice.repository.ProductRepository;
 import nurdanemin.commonpackage.events.catalog.ProductCreatedEvent;
 import nurdanemin.commonpackage.kafka.producer.KafkaProducer;
+import nurdanemin.commonpackage.utils.dto.ProductClientResponse;
+import nurdanemin.commonpackage.utils.exceptions.BusinessException;
 import nurdanemin.commonpackage.utils.mappers.ModelMapperService;
 import org.springframework.stereotype.Service;
 
@@ -79,6 +81,21 @@ public class ProductManager implements ProductService {
         repository.deleteById(id);
     }
 
+    @Override
+    public ProductClientResponse getProductPrice(UUID productId) {
+        var response = new ProductClientResponse();
+        try{
+            rules.checkIfProductExists(productId);
+            response.setSuccess(true);
+            response.setProductPrice(getPrice(productId));
+        }catch(BusinessException exception){
+            response.setSuccess(false);
+            response.setMessage(exception.getMessage());
+            response.setProductPrice(0.0);
+        }
+        return response;
+    }
+
     private List<UUID> mapCategoriesToIdList(Product product){
         List<UUID> ids = new ArrayList<>();
         for(Category category: product.getCategories()){
@@ -101,5 +118,10 @@ public class ProductManager implements ProductService {
         event.setCategoryIds(mapCategoriesToIdList(createdProduct));
         event.setCategoryNames(mapCategoriesToNameList(createdProduct));
         producer.sendMessage(event, "product-created");
+    }
+
+    private double getPrice(UUID productId){
+        var product = repository.findById(productId);
+        return product.get().getPrice();
     }
 }

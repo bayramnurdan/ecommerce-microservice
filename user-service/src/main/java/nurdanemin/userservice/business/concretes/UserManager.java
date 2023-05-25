@@ -5,6 +5,7 @@ import nurdanemin.commonpackage.events.user.UserCreatedEvent;
 import nurdanemin.commonpackage.events.user.UserUpdatedEvent;
 import nurdanemin.commonpackage.kafka.producer.KafkaProducer;
 import nurdanemin.commonpackage.utils.mappers.ModelMapperService;
+import nurdanemin.userservice.business.abstracts.AddressService;
 import nurdanemin.userservice.business.abstracts.UserService;
 import nurdanemin.userservice.business.dto.request.create.CreateAddressRequest;
 import nurdanemin.userservice.business.dto.request.create.CreateUserRequest;
@@ -31,6 +32,7 @@ public class UserManager implements UserService {
     private final UserRepository repository;
     private final ModelMapperService mapper;
     private final UserBusinessRules rules;
+    private final AddressService addressService;
     private KafkaProducer producer;
 
 
@@ -46,10 +48,7 @@ public class UserManager implements UserService {
     @Override
     public GetUserResponse getById(UUID id) {
         User user = repository.findById(id).orElseThrow();
-
-
-
-        return null;
+        return mapper.forResponse().map(user, GetUserResponse.class);
     }
 
     @Override
@@ -59,6 +58,7 @@ public class UserManager implements UserService {
         user.setId(UUID.randomUUID());
         user.setRole(Role.USER);
         User createdUser = repository.save(user);
+        System.out.println(createdUser.getId());
         producer.sendMessage(new UserCreatedEvent(createdUser.getId()), "user-created");
         return mapper.forResponse().map(createdUser, CreateUserResponse.class);
     }
@@ -84,18 +84,24 @@ public class UserManager implements UserService {
     public void addAddressForUser(UUID userId, CreateAddressRequest addressRequest) {
         rules.checkIfExistsById(userId);
         User user = repository.findById(userId).orElseThrow();
+        addressRequest.setUserId(user.getId());
 
         Address addressCreated = addressService.createAddress(addressRequest);
         List<Address> usersAddresses = user.getAddresses();
         usersAddresses.add(addressCreated);
 
         User userUpdated = repository.save(user);
-
     }
 
-    @Override
-    public void deleteAddressFromUser(Long addressId, Long userId) {
 
+
+    @Override
+    public void deleteAddressFromUser(UUID addressId, UUID userId) {
+        User user = repository.findById(userId).orElseThrow();
+        List<Address> addresses = user.getAddresses();
+        addresses.removeIf(address -> (address.getId()  == addressId));
+        repository.save(user);
+        addressService.deleteOwnerOfAddress(addressId, userId);
     }
 
 

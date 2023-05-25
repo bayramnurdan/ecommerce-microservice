@@ -20,5 +20,5 @@ public interface UserService {
     void addCartForUser(UUID userId, UUID cartId);
     void addAddressForUser(UUID userId, CreateAddressRequest addressRequest);
 
-    void deleteAddressFromUser( Long userId, UUID addressId,);
+    void deleteAddressFromUser( UUID userId, UUID addressId);
 }

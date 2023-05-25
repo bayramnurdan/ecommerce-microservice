@@ -1,5 +1,6 @@
 package nurdanemin.cartservice.business.abstracts;
 
+import nurdanemin.cartservice.business.dto.request.create.CreateCartItemRequest;
 import nurdanemin.cartservice.business.dto.response.create.CreateShoppingCartResponse;
 import nurdanemin.cartservice.business.dto.response.get.GetAllShoppingCartsResponse;
 import nurdanemin.cartservice.business.dto.response.get.GetShoppingCartResponse;
@@ -11,6 +12,11 @@ public interface ShoppingCartService {
     List<GetAllShoppingCartsResponse> getAll();
     GetShoppingCartResponse getById(UUID id);
     CreateShoppingCartResponse add(UUID userId);
+    GetShoppingCartResponse addtoCart(CreateCartItemRequest request);
+
+    GetShoppingCartResponse deleteItemFromCart(UUID shoppingCartId, UUID cartItemId);
+    GetShoppingCartResponse updateItemQuantity(UUID shoppingCartId, UUID cartItemId, int quantity);
+
 
 
 }
