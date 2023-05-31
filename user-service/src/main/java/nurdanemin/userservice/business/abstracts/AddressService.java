@@ -18,6 +18,6 @@ public interface AddressService {
     Address createAddress(CreateAddressRequest request);
 
 
-    void addUserForAddress(Address address, User user);
+
     void deleteOwnerOfAddress(UUID addressId, UUID userId);
 }

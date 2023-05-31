@@ -1,6 +1,6 @@
 package nurdanemin.commonpackage.configuration.kafka.producer;
 
-import nurdanemin.commonpackage.kafka.producer.KafkaProducer;
+import nurdanemin.commonpackage.utils.kafka.producer.KafkaProducer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.KafkaTemplate;

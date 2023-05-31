@@ -1,5 +1,6 @@
 package nurdanemin.userservice.api.controllers;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import nurdanemin.userservice.business.abstracts.UserService;
 import nurdanemin.userservice.business.dto.request.create.CreateAddressRequest;
@@ -22,6 +23,7 @@ public class UsersController {
     private final UserService service;
 
 
+
     @GetMapping
     public List<GetAllUsersResponse> getAll(){
         return service.getAll();
@@ -34,7 +36,7 @@ public class UsersController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CreateUserResponse add(@RequestBody CreateUserRequest request){
+    public CreateUserResponse add(@Valid @RequestBody CreateUserRequest request){
         return service.createUser(request);
     }
 
@@ -43,16 +45,17 @@ public class UsersController {
         return  service.updateUser(id, request);
     }
 
-    @PutMapping("/add/address/{userId}")
-    public void addAddresstoUser(@PathVariable  UUID userId, @RequestBody CreateAddressRequest addressRequest){
-        service.addAddressForUser(userId, addressRequest);
+    @PutMapping("/add/address")
+    public void addAddresstoUser(@RequestBody CreateAddressRequest addressRequest){
+        service.addAddressForUser(addressRequest);
     }
 
 
 
 
-    @DeleteMapping("/delete-address-from-user/{userId}")
-    public  void deleteAdDressForUser(@RequestParam UUID addressId, @PathVariable UUID userId){
+    @DeleteMapping("/delete-address-from-user")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public  void deleteAdDressForUser(@RequestParam UUID addressId, @RequestParam UUID userId){
         service.deleteAddressFromUser(addressId, userId);
 
     }

@@ -13,7 +13,7 @@ import nurdanemin.cartservice.entities.ShoppingCart;
 import nurdanemin.cartservice.repository.ShoppingCartRepository;
 import nurdanemin.commonpackage.events.Event;
 import nurdanemin.commonpackage.events.shoppingcart.ShoppingCartCreatedEvent;
-import nurdanemin.commonpackage.kafka.producer.KafkaProducer;
+import nurdanemin.commonpackage.utils.kafka.producer.KafkaProducer;
 import nurdanemin.commonpackage.utils.dto.ProductClientResponse;
 import nurdanemin.commonpackage.utils.mappers.ModelMapperService;
 import org.springframework.stereotype.Service;
@@ -50,7 +50,9 @@ public class ShoppingCartManager implements ShoppingCartService {
         cart.setId(UUID.randomUUID());
         cart.setUserId(userId);
         var createdCart = repository.save(cart);
-        Event event = new ShoppingCartCreatedEvent(createdCart.getId(), userId);
+        ShoppingCartCreatedEvent event = new ShoppingCartCreatedEvent();
+        event.setCartId(createdCart.getId());
+        event.setUserId(userId);
         producer.sendMessage(event, "shopping-cart-for-user-created");
         return mapper.forResponse().map(createdCart, CreateShoppingCartResponse.class);
     }

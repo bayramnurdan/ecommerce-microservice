@@ -1,6 +1,7 @@
 spring:
   application:
-    name: cart-service
+    name: inventory-service
+
   datasource:
     username: postgres
     password: '12345'

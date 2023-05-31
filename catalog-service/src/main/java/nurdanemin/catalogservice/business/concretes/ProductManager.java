@@ -14,7 +14,7 @@ import nurdanemin.catalogservice.entities.Category;
 import nurdanemin.catalogservice.entities.Product;
 import nurdanemin.catalogservice.repository.ProductRepository;
 import nurdanemin.commonpackage.events.catalog.ProductCreatedEvent;
-import nurdanemin.commonpackage.kafka.producer.KafkaProducer;
+import nurdanemin.commonpackage.utils.kafka.producer.KafkaProducer;
 import nurdanemin.commonpackage.utils.dto.ProductClientResponse;
 import nurdanemin.commonpackage.utils.exceptions.BusinessException;
 import nurdanemin.commonpackage.utils.mappers.ModelMapperService;

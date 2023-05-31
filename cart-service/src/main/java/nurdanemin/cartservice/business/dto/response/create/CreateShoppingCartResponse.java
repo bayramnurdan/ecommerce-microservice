@@ -12,5 +12,5 @@ import java.util.UUID;
 @Setter
 public class CreateShoppingCartResponse {
     private UUID id;
-    private Long userId;
+    private UUID userId;
 }

@@ -5,14 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd4018d7-7c80-47c4-b162-d42463a104d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/constants/Messages.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/dto/ClientResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/dto/ProductClientResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/abstracts/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/abstracts/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-getway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-getway/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/ProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/ProductManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/controllers/ProductsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/controllers/ProductsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/constants/Paths.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/constants/Paths.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/configuration/kafka/producer/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/configuration/kafka/producer/KafkaProducerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/events/shoppingcart/ShoppingCartCreatedEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/events/shoppingcart/ShoppingCartCreatedEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/kafka/producer/KafkaProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/kafka/producer/KafkaProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +74,9 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/catalog-service/src/main/resources" />
@@ -94,10 +96,16 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.FilterServiceApplication ">
-    <configuration name="ApiGetwayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="api-getway" />
+  <component name="RunManager" selected="Spring Boot.ApiGetwayApplication">
+    <configuration name="ApiGetwayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="api-gateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="nurdanemin.apigetway.ApiGetwayApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nurdanemin.apigetway.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -112,20 +120,6 @@
     <configuration name="CartServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="cart-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="nurdanemin.cartservice.CartServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CatalogServiceApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="inventory-service" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="nurdanemin.catalogservice.CatalogServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CatalogServiceApplication (2)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="catalogservice" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="nurdanemin.catalogservice.CatalogServiceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -151,16 +145,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FilterServiceApplication " type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <configuration name="FilterServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="filterservice" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="nurdanemin.filterservice.FilterServiceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FilterServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="filter-service" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="nurdanemin.filterservice.FilterServiceApplication" />
+    <configuration name="InvoiceServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="invoice-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="nurdanemin.invoiceservice.InvoiceServiceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -193,6 +187,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.ApiGetwayApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -216,6 +215,13 @@
       <workItem from="1684914075041" duration="3454000" />
       <workItem from="1684946820677" duration="676000" />
       <workItem from="1684956226763" duration="8743000" />
+      <workItem from="1685556887865" duration="488000" />
+      <workItem from="1685557394007" duration="5966000" />
+      <workItem from="1685565620401" duration="634000" />
+      <workItem from="1685567836990" duration="679000" />
+      <workItem from="1685568660745" duration="82000" />
+      <workItem from="1685568778800" duration="197000" />
+      <workItem from="1685569200347" duration="3164000" />
     </task>
     <servers />
   </component>

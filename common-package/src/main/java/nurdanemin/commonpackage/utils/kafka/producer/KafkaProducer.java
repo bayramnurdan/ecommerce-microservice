@@ -1,4 +1,4 @@
-package nurdanemin.commonpackage.kafka.producer;
+package nurdanemin.commonpackage.utils.kafka.producer;
 
 import nurdanemin.commonpackage.events.Event;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -11,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Slf4j
-@Service
 @RequiredArgsConstructor
 public class KafkaProducer {
     private final KafkaTemplate<String, Object> kafkaTemplate;

@@ -51,10 +51,7 @@ public class AddressManager implements AddressService {
         return  repository.save(address);
     }
 
-    @Override
-    public void addUserForAddress(Address address, User user) {
 
-    }
 
     @Override
     public void deleteOwnerOfAddress(UUID addressId, UUID userId) {
