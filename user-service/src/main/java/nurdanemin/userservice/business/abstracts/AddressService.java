@@ -17,7 +17,4 @@ public interface AddressService {
 
     Address createAddress(CreateAddressRequest request);
 
-
-
-    void deleteOwnerOfAddress(UUID addressId, UUID userId);
 }

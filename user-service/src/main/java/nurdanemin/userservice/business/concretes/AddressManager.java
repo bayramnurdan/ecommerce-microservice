@@ -12,9 +12,8 @@ import nurdanemin.userservice.entities.User;
 import nurdanemin.userservice.repository.AddressRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
+
 @Service
 @AllArgsConstructor
 public class AddressManager implements AddressService {
@@ -47,17 +46,8 @@ public class AddressManager implements AddressService {
         }
 
         Address address = mapper.forResponse().map(request, Address.class);
-        address.setUsers(new ArrayList<>());
+        address.setUsers(new HashSet<>());
         return  repository.save(address);
     }
 
-
-
-    @Override
-    public void deleteOwnerOfAddress(UUID addressId, UUID userId) {
-        Address address = repository.findById(addressId).orElseThrow();
-        List<User> users = address.getUsers();
-        users.removeIf(user -> (user.getId()==userId));
-        repository.save(address);
-    }
 }

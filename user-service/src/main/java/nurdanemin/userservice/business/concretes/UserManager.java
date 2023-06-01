@@ -1,13 +1,14 @@
 package nurdanemin.userservice.business.concretes;
 
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import nurdanemin.commonpackage.events.Id;
 import nurdanemin.commonpackage.events.user.UserCreatedEvent;
 import nurdanemin.commonpackage.events.user.UserUpdatedEvent;
 import nurdanemin.commonpackage.utils.kafka.producer.KafkaProducer;
 import nurdanemin.commonpackage.utils.mappers.ModelMapperService;
 import nurdanemin.userservice.business.abstracts.AddressService;
 import nurdanemin.userservice.business.abstracts.UserService;
+import nurdanemin.userservice.business.dto.UserResponseDto;
 import nurdanemin.userservice.business.dto.request.create.CreateAddressRequest;
 import nurdanemin.userservice.business.dto.request.create.CreateUserRequest;
 import nurdanemin.userservice.business.dto.request.update.UpdateUserRequest;
@@ -22,8 +23,7 @@ import nurdanemin.userservice.entities.enums.Role;
 import nurdanemin.userservice.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -40,7 +40,7 @@ public class UserManager implements UserService {
     public List<GetAllUsersResponse> getAll() {
         List<User> users = repository.findAll();
         return users.stream()
-                .map(user -> mapper.forResponse().map(user, GetAllUsersResponse.class))
+                .map(user -> mapForUserResponse(user, new GetAllUsersResponse()))
                 .toList();
 
     }
@@ -48,7 +48,10 @@ public class UserManager implements UserService {
     @Override
     public GetUserResponse getById(UUID id) {
         User user = repository.findById(id).orElseThrow();
-        return mapper.forResponse().map(user, GetUserResponse.class);
+        GetUserResponse response = mapForUserResponse(user, new GetUserResponse());
+        response.setAddressesIds(getItemsAsUUIDSet(user.getAddresses()));
+        response.setOrderIds(user.getOrderIds());
+        return response;
     }
 
     @Override
@@ -90,22 +93,46 @@ public class UserManager implements UserService {
         addressRequest.setUserId(user.getId());
 
         Address addressCreated = addressService.createAddress(addressRequest);
-        List<Address> usersAddresses = user.getAddresses();
+        Set<Address> usersAddresses = user.getAddresses();
         usersAddresses.add(addressCreated);
 
         repository.save(user);
 
     }
 
-
-
+// TODO: SİL ÇALIŞMIYOR :(
     @Override
     public void deleteAddressFromUser(UUID addressId, UUID userId) {
-        User user = repository.findById(userId).orElseThrow();
-        List<Address> addresses = user.getAddresses();
-        addresses.removeIf(address -> (address.getId()  == addressId));
-        repository.save(user);
-        addressService.deleteOwnerOfAddress(addressId, userId);
+       User user = repository.findById(userId).orElseThrow();
+       var userAddresses = user.getAddresses();
+       for (Address address: userAddresses){
+           if (address.getId() == addressId){
+               userAddresses.remove(address);
+               break;
+           }
+
+       }
+       user.setAddresses(userAddresses);
+       repository.save(user);
+    }
+
+    private  Set<UUID> getItemsAsUUIDSet(Set<? extends Id> items){
+        Set<UUID> response = new HashSet<>();
+        for (var item :items ){
+            response.add(item.getId());
+        }
+        return response;
+    }
+
+    private <T extends UserResponseDto> T  mapForUserResponse(User user, T response){
+        response.setId(user.getId());
+        response.setFirstName(user.getFirstName());
+        response.setLastName(user.getLastName());
+        response.setEmail(user.getEmail());
+        response.setRole(user.getRole());
+        response.setCartId(user.getCartId());
+        return response;
+
     }
 
 

@@ -11,10 +11,9 @@ import nurdanemin.cartservice.business.dto.response.get.GetShoppingCartResponse;
 import nurdanemin.cartservice.entities.CartItem;
 import nurdanemin.cartservice.entities.ShoppingCart;
 import nurdanemin.cartservice.repository.ShoppingCartRepository;
-import nurdanemin.commonpackage.events.Event;
 import nurdanemin.commonpackage.events.shoppingcart.ShoppingCartCreatedEvent;
-import nurdanemin.commonpackage.utils.kafka.producer.KafkaProducer;
 import nurdanemin.commonpackage.utils.dto.ProductClientResponse;
+import nurdanemin.commonpackage.utils.kafka.producer.KafkaProducer;
 import nurdanemin.commonpackage.utils.mappers.ModelMapperService;
 import org.springframework.stereotype.Service;
 

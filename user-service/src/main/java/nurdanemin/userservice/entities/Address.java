@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -16,7 +17,7 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name="Addresses")
-public class Address {
+public class Address implements nurdanemin.commonpackage.events.Id {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -28,6 +29,6 @@ public class Address {
     private String country;
 
     @ManyToMany(mappedBy = "addresses")
-    private List<User> users = new ArrayList<>();
+    private Set<User> users = new HashSet<>();
 
 }

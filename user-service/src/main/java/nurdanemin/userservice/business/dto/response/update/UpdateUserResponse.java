@@ -1,4 +1,6 @@
 package nurdanemin.userservice.business.dto.response.update;
 
-public class UpdateUserResponse {
+import nurdanemin.userservice.business.dto.UserResponseDto;
+
+public class UpdateUserResponse  extends UserResponseDto {
 }

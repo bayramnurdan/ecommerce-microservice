@@ -5,34 +5,22 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import nurdanemin.userservice.entities.Address;
-import nurdanemin.userservice.entities.enums.Role;
+import nurdanemin.userservice.business.dto.UserResponseDto;
+
 
 import java.util.ArrayList;
-import java.util.List;
+
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class GetUserResponse {
-    private UUID id;
-
-    private String firstName;
-    private String lastName;
-    private String email;
-
-    @Enumerated
-    private Role role;
-
-
+public class GetUserResponse extends UserResponseDto {
     @ElementCollection
-    private List<UUID> addressesIds = new ArrayList<>();
-
-
-    private Long cartId;
-
+    private Set<UUID> addressesIds = new HashSet<>();
     @ElementCollection
-    private List<Long> orderIds;
+    private Set<UUID> orderIds;
 }

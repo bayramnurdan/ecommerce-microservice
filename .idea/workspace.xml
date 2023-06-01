@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd4018d7-7c80-47c4-b162-d42463a104d6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/events/Id.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-getway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-getway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/ProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/ProductManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/configuration/kafka/producer/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/configuration/kafka/producer/KafkaProducerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/events/shoppingcart/ShoppingCartCreatedEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/events/shoppingcart/ShoppingCartCreatedEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/kafka/producer/KafkaProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/kafka/producer/KafkaProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,7 +216,8 @@
       <workItem from="1685567836990" duration="679000" />
       <workItem from="1685568660745" duration="82000" />
       <workItem from="1685568778800" duration="197000" />
-      <workItem from="1685569200347" duration="3164000" />
+      <workItem from="1685569200347" duration="3347000" />
+      <workItem from="1685642537490" duration="6820000" />
     </task>
     <servers />
   </component>

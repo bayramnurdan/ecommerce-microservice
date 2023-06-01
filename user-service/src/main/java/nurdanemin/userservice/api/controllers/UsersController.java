@@ -52,7 +52,6 @@ public class UsersController {
 
 
 
-
     @DeleteMapping("/delete-address-from-user")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public  void deleteAdDressForUser(@RequestParam UUID addressId, @RequestParam UUID userId){
