@@ -15,5 +15,5 @@ public class CreateCartItemRequest {
     private UUID productId;
     @Min(1)
     private int quantity;
-    private double pricePerUnit;
+
 }

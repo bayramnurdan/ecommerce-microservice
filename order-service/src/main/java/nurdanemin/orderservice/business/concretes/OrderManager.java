@@ -9,7 +9,7 @@ import nurdanemin.commonpackage.utils.mappers.ModelMapperService;
 import nurdanemin.orderservice.api.controllers.clients.CartForOrderClient;
 import nurdanemin.orderservice.api.controllers.clients.CartItemClient;
 import nurdanemin.orderservice.api.controllers.clients.PaymentClient;
-import nurdanemin.orderservice.api.controllers.clients.ProductClient;
+import nurdanemin.orderservice.api.controllers.clients.ProductForOrderClient;
 import nurdanemin.orderservice.business.abstracts.OrderItemService;
 import nurdanemin.orderservice.business.abstracts.OrderService;
 import nurdanemin.orderservice.business.dto.request.create.CreateOrderRequest;
@@ -35,7 +35,7 @@ public class OrderManager implements OrderService {
     private final OrderItemService orderItemService;
     private final ModelMapperService mapper;
     private final PaymentClient paymentClient;
-    private final ProductClient productClient;
+    private final ProductForOrderClient productClient;
     @Override
     public List<GetAllOrdersResponse> getAll() {
         return null;

@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd4018d7-7c80-47c4-b162-d42463a104d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/dto/CreateInvoiceRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/dto/CreatePaymentRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/dto/CreatePaymentResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/dto/CreateShippingRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/dto/GetCartItemResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/dto/GetShoppingCartResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/dto/ProcessPaymentRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/dto/ShoppingCartResponseDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/abstracts/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/abstracts/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/ProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/ProductManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/controllers/ProductsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/controllers/ProductsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-package/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common-package/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/constants/Paths.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/constants/Paths.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,31 +44,31 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;19&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/nurdanemin/IdeaProjects/ecommerce-microservice&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;4ca3bad752e51167d9fa8ee4edcd92c5&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "19",
+    "last_opened_file_path": "/Users/nurdanemin/IdeaProjects/ecommerce-microservice",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "configurable.group.build",
+    "spring.configuration.checksum": "331df348329d653862c2adb14918668b",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -230,7 +219,8 @@
       <workItem from="1685569200347" duration="3347000" />
       <workItem from="1685642537490" duration="7190000" />
       <workItem from="1685696915603" duration="12848000" />
-      <workItem from="1685711745421" duration="15401000" />
+      <workItem from="1685711745421" duration="17058000" />
+      <workItem from="1685748986307" duration="653000" />
     </task>
     <servers />
   </component>

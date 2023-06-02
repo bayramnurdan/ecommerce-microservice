@@ -1,14 +1,13 @@
 package nurdanemin.orderservice.api.controllers;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import nurdanemin.orderservice.business.abstracts.OrderService;
 import nurdanemin.orderservice.business.dto.request.create.CreateOrderRequest;
 import nurdanemin.orderservice.business.dto.response.create.CreateOrderResponse;
 import nurdanemin.orderservice.business.dto.response.get.GetAllOrdersResponse;
 import nurdanemin.orderservice.business.dto.response.get.GetOrderResponse;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -27,10 +26,13 @@ public class OrdersController {
         return service.getById(id);
     }
 
-    public CreateOrderResponse add(CreateOrderRequest request){
+    @PostMapping()
+    public CreateOrderResponse add(@RequestBody CreateOrderRequest request){
         return service.add(request);
     }
-    List<GetAllOrdersResponse> getAllOrdersOfUser(UUID userId){
+
+    @GetMapping("get-all-orders-of/{userId}")
+    List<GetAllOrdersResponse> getAllOrdersOfUser(@PathVariable  UUID userId){
         return service.getAllOrdersOfUser(userId);
     }
 }

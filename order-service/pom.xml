@@ -28,6 +28,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
             <groupId>nurdanemin</groupId>
             <artifactId>common-package</artifactId>
             <version>0.0.1-SNAPSHOT</version>

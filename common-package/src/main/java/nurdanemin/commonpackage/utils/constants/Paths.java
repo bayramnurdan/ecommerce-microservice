@@ -19,4 +19,8 @@ public class Paths {
         public static final String ServiceBasePackage = "nurdanemin.userservice";
 
     }
+    public static class Order{
+        public static final String ServiceBasePackage = "nurdanemin.orderservice";
+
+    }
 }
