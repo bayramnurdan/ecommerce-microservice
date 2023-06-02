@@ -1,11 +1,11 @@
-package nurdanemin.cartservice.business.dto.response.get;
+package nurdanemin.commonpackage.utils.dto;
 
 import jakarta.persistence.ElementCollection;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import nurdanemin.cartservice.business.dto.response.ShoppingCartResponseDto;
+
 
 import java.util.HashSet;
 import java.util.Set;

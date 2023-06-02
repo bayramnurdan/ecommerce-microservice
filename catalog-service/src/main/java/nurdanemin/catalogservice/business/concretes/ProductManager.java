@@ -99,6 +99,14 @@ public class ProductManager implements ProductService {
         return response;
     }
 
+    @Override
+    public void updateQuantity(UUID productId, int updateAmount) {
+        Product product = repository.findById(productId).orElseThrow();
+        product.setAmount(product.getAmount()+updateAmount);
+        repository.save(product);
+
+    }
+
 
     private Set<String> mapCategoriesToNameSet(Product product){
         Set<String> names = new HashSet<>();

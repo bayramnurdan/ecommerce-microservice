@@ -5,10 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+
+import java.time.LocalDateTime;
+import java.util.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,8 +26,8 @@ public class Order {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")
-    private List<OrderItem> orderItems = new ArrayList<>();
-    private Date createdAt;
-    private Date updatedAt;
+    private Set<OrderItem> orderItems = new HashSet<>();
+    private LocalDateTime orderedAt;
+
 
 }

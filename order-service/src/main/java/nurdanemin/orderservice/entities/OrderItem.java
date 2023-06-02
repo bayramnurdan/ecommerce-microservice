@@ -15,7 +15,7 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name="OrderItems")
-public class OrderItem {
+public class OrderItem  implements nurdanemin.commonpackage.events.Id {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;

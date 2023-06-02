@@ -20,5 +20,6 @@ public interface ProductService {
     UpdateProductResponse update(UUID id, UpdateProductRequest request);
     void delete(UUID id);
     ProductClientResponse getProductInfo(UUID productId);
+    void updateQuantity(UUID productId, int updateAmount);
 
 }

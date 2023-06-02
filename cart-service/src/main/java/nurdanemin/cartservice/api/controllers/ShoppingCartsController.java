@@ -5,8 +5,7 @@ import lombok.RequiredArgsConstructor;
 import nurdanemin.cartservice.business.abstracts.ShoppingCartService;
 import nurdanemin.cartservice.business.dto.request.create.CreateCartItemRequest;
 import nurdanemin.cartservice.business.dto.response.get.GetAllShoppingCartsResponse;
-import nurdanemin.cartservice.business.dto.response.get.GetShoppingCartResponse;
-import org.springframework.stereotype.Service;
+import nurdanemin.commonpackage.utils.dto.GetShoppingCartResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

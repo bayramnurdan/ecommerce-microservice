@@ -1,7 +1,7 @@
 package nurdanemin.cartservice.business.dto.response.get;
 
 
-import nurdanemin.cartservice.business.dto.response.ShoppingCartResponseDto;
+import nurdanemin.commonpackage.utils.dto.ShoppingCartResponseDto;
 
 
 public class GetAllShoppingCartsResponse  extends ShoppingCartResponseDto {

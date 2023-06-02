@@ -33,7 +33,6 @@ public class ProductsController {
     }
     @GetMapping(value = "/info/{productId}")
     public ProductClientResponse getProductInfo(@PathVariable UUID productId){
-        System.out.println("CONTROLLERA GELDİ");
         return service.getProductInfo(productId);
     }
 
@@ -52,5 +51,10 @@ public class ProductsController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(UUID id){
         service.delete(id);
+    }
+
+    @PutMapping("update-quantity/{productId}")
+    public void updateQuantity(@PathVariable UUID productId,@RequestParam int updateAmount){
+        service.updateQuantity(productId, updateAmount);
     }
 }

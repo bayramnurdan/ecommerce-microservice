@@ -3,7 +3,7 @@ package nurdanemin.cartservice.business.abstracts;
 import nurdanemin.cartservice.business.dto.request.create.CreateCartItemRequest;
 import nurdanemin.cartservice.business.dto.response.create.CreateShoppingCartResponse;
 import nurdanemin.cartservice.business.dto.response.get.GetAllShoppingCartsResponse;
-import nurdanemin.cartservice.business.dto.response.get.GetShoppingCartResponse;
+import nurdanemin.commonpackage.utils.dto.GetShoppingCartResponse;
 
 import java.util.List;
 import java.util.UUID;

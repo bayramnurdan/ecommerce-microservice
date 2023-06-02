@@ -1,4 +1,4 @@
-package nurdanemin.cartservice.business.dto.response.get;
+package nurdanemin.commonpackage.utils.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,7 +1,7 @@
 package nurdanemin.userservice.business.concretes;
 
 import lombok.AllArgsConstructor;
-import nurdanemin.commonpackage.events.Id;
+
 import nurdanemin.commonpackage.events.user.UserCreatedEvent;
 import nurdanemin.commonpackage.events.user.UserUpdatedEvent;
 import nurdanemin.commonpackage.utils.CommonMethods;
