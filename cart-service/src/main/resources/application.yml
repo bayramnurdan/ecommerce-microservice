@@ -5,7 +5,7 @@ spring:
   datasource:
     username: postgres
     password: '12345'
-    url: jdbc:postgresql://localhost:5432/cart-service-dev
+    url: jdbc:postgresql://localhost:5432/cartdb-dev
   jpa:
     properties:
       hibernate:
@@ -38,3 +38,9 @@ eureka:
     prefer-ip-address: true
 server:
   port: 0
+resilience4j:
+  retry:
+    instances:
+      product-retry:
+        max-attempts: 5
+        wait-duration: 7s

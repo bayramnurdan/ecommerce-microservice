@@ -50,4 +50,14 @@ public class AddressManager implements AddressService {
         return  repository.save(address);
     }
 
+    @Override
+    public void deleteOwnerForAddress(User user, UUID addresId) {
+        Address address = repository.findById(addresId).orElseThrow();
+        Set<User> owners = address.getUsers();
+        owners.remove(user);
+        address.setUsers(owners);
+        repository.save(address);
+
+    }
+
 }

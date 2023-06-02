@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -21,5 +22,5 @@ public class CreateProductRequest {
 
     private UUID brandId;
     @ElementCollection
-    private List<UUID> categoryIds;
+    private Set<UUID> categoryIds;
 }

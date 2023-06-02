@@ -1,5 +1,6 @@
 package nurdanemin.cartservice.business.dto.request.create;
 
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,9 +13,7 @@ import java.util.UUID;
 @Setter
 public class CreateCartItemRequest {
     private UUID productId;
-    private UUID cartId;
-
+    @Min(1)
     private int quantity;
-    private double discount;
-    private double price = 0.0 ;
+    private double pricePerUnit;
 }

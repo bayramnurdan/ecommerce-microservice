@@ -4,6 +4,7 @@ import lombok.*;
 import nurdanemin.commonpackage.events.Event;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,6 +18,6 @@ public class ProductCreatedEvent implements Event {
     private int amount;
     private double price;
     private double discount;
-    private List<UUID> categoryIds;
-    private List<String> categoryNames;
+    private Set<UUID> categoryIds;
+    private Set<String> categoryNames;
 }

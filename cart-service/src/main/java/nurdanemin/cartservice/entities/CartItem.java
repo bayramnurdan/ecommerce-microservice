@@ -16,14 +16,14 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name="CartItems")
-public class CartItem {
+public class CartItem implements nurdanemin.commonpackage.events.Id {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     private UUID productId;
     private String productName;
-    private int productQuantity;
+    private int quantity;
     private  double pricePerUnit;
 
 

@@ -18,7 +18,7 @@ public interface UserService {
     CreateUserResponse createUser(CreateUserRequest request);
     UpdateUserResponse updateUser(UUID id, UpdateUserRequest request);
     void addCartForUser(UUID userId, UUID cartId);
-    void addAddressForUser(CreateAddressRequest addressRequest);
+    GetUserResponse addAddressForUser(CreateAddressRequest addressRequest);
 
-    void deleteAddressFromUser( UUID userId, UUID addressId);
+    GetUserResponse deleteAddressFromUser( UUID userId, UUID addressId);
 }

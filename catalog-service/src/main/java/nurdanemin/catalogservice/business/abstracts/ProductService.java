@@ -19,6 +19,6 @@ public interface ProductService {
     CreateProductResponse create(CreateProductRequest request);
     UpdateProductResponse update(UUID id, UpdateProductRequest request);
     void delete(UUID id);
-    ProductClientResponse getProductPrice(UUID productId);
+    ProductClientResponse getProductInfo(UUID productId);
 
 }

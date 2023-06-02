@@ -31,9 +31,10 @@ public class ProductsController {
         return service.getById(id);
 
     }
-    @GetMapping(value = "/api/products/product-price/{productId}")
-    public ProductClientResponse getProductPrice(@PathVariable UUID productId){
-        return service.getProductPrice(productId);
+    @GetMapping(value = "/info/{productId}")
+    public ProductClientResponse getProductInfo(@PathVariable UUID productId){
+        System.out.println("CONTROLLERA GELDİ");
+        return service.getProductInfo(productId);
     }
 
     @PostMapping

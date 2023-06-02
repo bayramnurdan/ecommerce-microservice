@@ -10,6 +10,7 @@ import nurdanemin.catalogservice.entities.Category;
 import nurdanemin.catalogservice.entities.Product;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 public interface CategoryService {
@@ -18,6 +19,6 @@ public interface CategoryService {
     CreateCategoryResponse create(CreateCategoryRequest request);
     UpdateCategoryResponse update(UUID id, UpdateCategoryRequest request);
     void delete(UUID id);
-    List<Category> getCategoriesAsList(List<UUID> idList);
-    void addProductForCategories(Product product, List<UUID>categoryIds);
+    Set<Category> getCategoriesAsSet(Set<UUID> idList);
+    void addProductForCategories(Product product, Set<UUID>categoryIds);
 }

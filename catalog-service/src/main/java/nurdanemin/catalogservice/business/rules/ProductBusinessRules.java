@@ -13,6 +13,7 @@ public class ProductBusinessRules {
     private final ProductRepository repository;
     public void checkIfProductExists(UUID id){
         if (!repository.existsById(id)){
+            System.out.println("RULEDA ELENEIYOR");
             throw new BusinessException(("PRODUCT_DOES_NOT_EXIST"));
         }
     }

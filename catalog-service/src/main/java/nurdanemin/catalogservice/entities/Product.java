@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -15,7 +16,7 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name="Products")
-public class Product {
+public class Product   {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -30,7 +31,7 @@ public class Product {
 
     @ManyToMany
     @JoinColumn(name = "category_id")
-    private List<Category> categories;
+    private Set<Category> categories;
 
 
 

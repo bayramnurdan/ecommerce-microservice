@@ -12,7 +12,7 @@ public interface ShoppingCartService {
     List<GetAllShoppingCartsResponse> getAll();
     GetShoppingCartResponse getById(UUID id);
     CreateShoppingCartResponse add(UUID userId);
-    GetShoppingCartResponse addtoCart(CreateCartItemRequest request);
+    GetShoppingCartResponse addtoCart(UUID cartId, CreateCartItemRequest request);
 
     GetShoppingCartResponse deleteItemFromCart(UUID shoppingCartId, UUID cartItemId);
     GetShoppingCartResponse updateItemQuantity(UUID shoppingCartId, UUID cartItemId, int quantity);

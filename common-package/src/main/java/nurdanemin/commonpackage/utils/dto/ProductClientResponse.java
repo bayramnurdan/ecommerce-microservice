@@ -11,5 +11,6 @@ import lombok.Setter;
 @Setter
 public class ProductClientResponse extends ClientResponse{
     private double productPrice;
+    private String productName;
 
 }

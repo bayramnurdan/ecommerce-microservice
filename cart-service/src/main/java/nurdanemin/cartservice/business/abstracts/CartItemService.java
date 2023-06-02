@@ -12,7 +12,7 @@ public interface CartItemService {
     List<GetAllCartItemsResponse> getAll();
     CartItem getCartItemById(UUID id);
 
-    CartItem createCartItem(CreateCartItemRequest request);
-    void setCartForCartItem(CartItem cartItem, ShoppingCart cart);
+    CartItem createCartItem(CreateCartItemRequest request, ShoppingCart cart);
     void updateQuantity(UUID cartItemId, int quantity);
+    void deleteCartItem(UUID id);
 }

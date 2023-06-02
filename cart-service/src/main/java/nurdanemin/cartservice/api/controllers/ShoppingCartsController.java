@@ -24,13 +24,13 @@ public class ShoppingCartsController {
     }
 
     @GetMapping("/{id}")
-    public GetShoppingCartResponse getById(UUID id){
+    public GetShoppingCartResponse getById(@PathVariable UUID id){
         return  service.getById(id);
     }
 
-    @PutMapping("/add-to-cart")
-    public GetShoppingCartResponse addtoCart(@Valid @RequestBody CreateCartItemRequest request){
-        return service.addtoCart(request);
+    @PutMapping("/add-to-cart/{cartId}")
+    public GetShoppingCartResponse addtoCart(@PathVariable UUID cartId, @Valid @RequestBody CreateCartItemRequest request){
+        return service.addtoCart(cartId, request);
 
     }
 

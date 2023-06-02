@@ -1,10 +1,12 @@
 package nurdanemin.cartservice.business.concretes;
 
-import lombok.RequiredArgsConstructor;
-import nurdanemin.cartservice.api.clients.ProductClient;
+
+import lombok.AllArgsConstructor;
+
 import nurdanemin.cartservice.business.abstracts.CartItemService;
 import nurdanemin.cartservice.business.abstracts.ShoppingCartService;
 import nurdanemin.cartservice.business.dto.request.create.CreateCartItemRequest;
+import nurdanemin.cartservice.business.dto.response.ShoppingCartResponseDto;
 import nurdanemin.cartservice.business.dto.response.create.CreateShoppingCartResponse;
 import nurdanemin.cartservice.business.dto.response.get.GetAllShoppingCartsResponse;
 import nurdanemin.cartservice.business.dto.response.get.GetShoppingCartResponse;
@@ -12,6 +14,7 @@ import nurdanemin.cartservice.entities.CartItem;
 import nurdanemin.cartservice.entities.ShoppingCart;
 import nurdanemin.cartservice.repository.ShoppingCartRepository;
 import nurdanemin.commonpackage.events.shoppingcart.ShoppingCartCreatedEvent;
+import nurdanemin.commonpackage.utils.CommonMethods;
 import nurdanemin.commonpackage.utils.dto.ProductClientResponse;
 import nurdanemin.commonpackage.utils.kafka.producer.KafkaProducer;
 import nurdanemin.commonpackage.utils.mappers.ModelMapperService;
@@ -22,13 +25,13 @@ import java.util.Set;
 import java.util.UUID;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class ShoppingCartManager implements ShoppingCartService {
     private final ShoppingCartRepository repository;
     private final ModelMapperService mapper;
     private final KafkaProducer producer;
     private final CartItemService cartItemService;
-    private final ProductClient productClient;
+
 
     @Override
     public List<GetAllShoppingCartsResponse> getAll() {
@@ -40,7 +43,9 @@ public class ShoppingCartManager implements ShoppingCartService {
     @Override
     public GetShoppingCartResponse getById(UUID id) {
         var cart = repository.findById(id).orElseThrow();
-        return mapper.forResponse().map(cart, GetShoppingCartResponse.class);
+        var response = mapForShopppingCartResponse(cart, new GetShoppingCartResponse());
+        response.setCartItemIds(CommonMethods.getItemsAsUUIDSet(cart.getCartItems()));
+        return response;
     }
 
     @Override
@@ -57,29 +62,23 @@ public class ShoppingCartManager implements ShoppingCartService {
     }
 
     @Override
-    public GetShoppingCartResponse addtoCart(CreateCartItemRequest request) {
-        ProductClientResponse response = productClient.getProductPrice(request.getProductId());
-        if (response.isSuccess()){
-            request.setPrice(response.getProductPrice());
-        }
-        ShoppingCart cart = repository.findById(request.getCartId()).orElseThrow();
+    public GetShoppingCartResponse addtoCart(UUID cartId, CreateCartItemRequest request) {
+        ShoppingCart cart = repository.findById(cartId).orElseThrow();
         Set<CartItem> cartItems = cart.getCartItems();
-        CartItem cartItem = cartItemService.createCartItem(request);
+        CartItem cartItem = cartItemService.createCartItem(request, cart);
         cartItems.add(cartItem);
         var cartSaved = repository.save(cart);
         calculateTotalPrice(cartSaved);
-        cartItemService.setCartForCartItem(cartItem, cartSaved);
-        return getById(request.getCartId());
+        return getById(cartId);
+
 
     }
 
     @Override
     public GetShoppingCartResponse deleteItemFromCart(UUID shoppingCartId, UUID cartItemId) {
+        cartItemService.deleteCartItem(cartItemId);
         ShoppingCart cart = repository.findById(shoppingCartId).orElseThrow();
-        Set<CartItem> cartItems = cart.getCartItems();
-        cartItems.removeIf(cartItem ->(cartItem.getId() == cartItemId));
-        var savedCart = repository.save(cart);
-        calculateTotalPrice(savedCart);
+        calculateTotalPrice(cart);
         return getById(shoppingCartId);
     }
 
@@ -93,12 +92,20 @@ public class ShoppingCartManager implements ShoppingCartService {
     private void calculateTotalPrice(ShoppingCart cart){
         double sum = 0.0;
         for( CartItem item :cart.getCartItems() ){
-            sum += item.getPricePerUnit()* item.getProductQuantity();
+            sum += item.getPricePerUnit()* item.getQuantity();
         }
         cart.setTotalPrice(sum);
         repository.save(cart);
 
     }
+
+    public <T extends ShoppingCartResponseDto> T mapForShopppingCartResponse(ShoppingCart cart, T response){
+        response.setId(cart.getId());
+        response.setUserId(cart.getUserId());
+        response.setTotalPrice(cart.getTotalPrice());
+        return response;
+    }
+
 
 
 }

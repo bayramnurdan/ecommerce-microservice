@@ -14,15 +14,15 @@ import nurdanemin.catalogservice.entities.Category;
 import nurdanemin.catalogservice.entities.Product;
 import nurdanemin.catalogservice.repository.ProductRepository;
 import nurdanemin.commonpackage.events.catalog.ProductCreatedEvent;
+import nurdanemin.commonpackage.utils.CommonMethods;
 import nurdanemin.commonpackage.utils.kafka.producer.KafkaProducer;
 import nurdanemin.commonpackage.utils.dto.ProductClientResponse;
 import nurdanemin.commonpackage.utils.exceptions.BusinessException;
 import nurdanemin.commonpackage.utils.mappers.ModelMapperService;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
+
 @Service
 @AllArgsConstructor
 public class ProductManager implements ProductService {
@@ -46,7 +46,7 @@ public class ProductManager implements ProductService {
         rules.checkIfProductExists(id);
        var product = repository.findById(id).orElseThrow();
        var response = mapper.forResponse().map(product, GetProductResponse.class);
-       response.setCategoryIds(mapCategoriesToIdList(product));
+       response.setCategoryIds(CommonMethods.getItemsAsUUIDSet(product.getCategories()));
        return response;
     }
 
@@ -55,12 +55,12 @@ public class ProductManager implements ProductService {
         rules.checkIfProductExistByNameAndBrand(request.getName(), request.getBrandId());
        var product = mapper.forRequest().map(request, Product.class);
        product.setId(UUID.randomUUID());
-       product.setCategories(categoryService.getCategoriesAsList(request.getCategoryIds()));
+       product.setCategories(categoryService.getCategoriesAsSet(request.getCategoryIds()));
        var createdProduct = repository.save(product);
        sendKafkaProductCreatedEvent(createdProduct);
-       categoryService.addProductForCategories(createdProduct, mapCategoriesToIdList(product));
+       categoryService.addProductForCategories(createdProduct, CommonMethods.getItemsAsUUIDSet(product.getCategories()));
        var response = mapper.forResponse().map(createdProduct, CreateProductResponse.class);
-       response.setCategoryIds(mapCategoriesToIdList(createdProduct));
+       response.setCategoryIds(CommonMethods.getItemsAsUUIDSet(createdProduct.getCategories()));
        return response;
     }
 
@@ -82,12 +82,15 @@ public class ProductManager implements ProductService {
     }
 
     @Override
-    public ProductClientResponse getProductPrice(UUID productId) {
+    public ProductClientResponse getProductInfo(UUID productId) {
         var response = new ProductClientResponse();
         try{
             rules.checkIfProductExists(productId);
             response.setSuccess(true);
-            response.setProductPrice(getPrice(productId));
+            Product product = repository.findById(productId).orElseThrow();
+            response.setProductPrice(product.getPrice());
+            response.setProductName(product.getName());
+
         }catch(BusinessException exception){
             response.setSuccess(false);
             response.setMessage(exception.getMessage());
@@ -96,15 +99,9 @@ public class ProductManager implements ProductService {
         return response;
     }
 
-    private List<UUID> mapCategoriesToIdList(Product product){
-        List<UUID> ids = new ArrayList<>();
-        for(Category category: product.getCategories()){
-            ids.add(category.getId());
-        }
-        return ids;
-    }
-    private List<String> mapCategoriesToNameList(Product product){
-        List<String> names = new ArrayList<>();
+
+    private Set<String> mapCategoriesToNameSet(Product product){
+        Set<String> names = new HashSet<>();
         for(Category category: product.getCategories()){
             names.add(category.getName());
         }
@@ -115,13 +112,9 @@ public class ProductManager implements ProductService {
 
     private void sendKafkaProductCreatedEvent(Product createdProduct) {
         var event = mapper.forResponse().map(createdProduct, ProductCreatedEvent.class);
-        event.setCategoryIds(mapCategoriesToIdList(createdProduct));
-        event.setCategoryNames(mapCategoriesToNameList(createdProduct));
+        event.setCategoryIds(CommonMethods.getItemsAsUUIDSet(createdProduct.getCategories()));
+        event.setCategoryNames(mapCategoriesToNameSet(createdProduct));
         producer.sendMessage(event, "product-created");
     }
 
-    private double getPrice(UUID productId){
-        var product = repository.findById(productId);
-        return product.get().getPrice();
-    }
 }

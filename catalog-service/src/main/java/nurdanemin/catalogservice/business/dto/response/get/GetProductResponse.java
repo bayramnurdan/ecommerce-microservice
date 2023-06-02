@@ -8,6 +8,7 @@ import lombok.Setter;
 
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -23,5 +24,5 @@ public class GetProductResponse {
 
     private UUID brandId;
 
-    private List<UUID> categoryIds;
+    private Set<UUID> categoryIds;
 }

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import nurdanemin.commonpackage.events.Id;
 import nurdanemin.commonpackage.events.user.UserCreatedEvent;
 import nurdanemin.commonpackage.events.user.UserUpdatedEvent;
+import nurdanemin.commonpackage.utils.CommonMethods;
 import nurdanemin.commonpackage.utils.kafka.producer.KafkaProducer;
 import nurdanemin.commonpackage.utils.mappers.ModelMapperService;
 import nurdanemin.userservice.business.abstracts.AddressService;
@@ -49,7 +50,7 @@ public class UserManager implements UserService {
     public GetUserResponse getById(UUID id) {
         User user = repository.findById(id).orElseThrow();
         GetUserResponse response = mapForUserResponse(user, new GetUserResponse());
-        response.setAddressesIds(getItemsAsUUIDSet(user.getAddresses()));
+        response.setAddressesIds(CommonMethods.getItemsAsUUIDSet(user.getAddresses()));
         response.setOrderIds(user.getOrderIds());
         return response;
     }
@@ -80,14 +81,13 @@ public class UserManager implements UserService {
 
     @Override
     public void addCartForUser(UUID userId, UUID cartId) {
-        System.out.println("CART BILGISI GELDI");
         User user = repository.findById(userId).orElseThrow();
         user.setCartId(cartId);
         repository.save(user);
     }
 
     @Override
-    public void addAddressForUser(CreateAddressRequest addressRequest) {
+    public GetUserResponse addAddressForUser(CreateAddressRequest addressRequest) {
         rules.checkIfExistsById(addressRequest.getUserId());
         User user = repository.findById(addressRequest.getUserId()).orElseThrow();
         addressRequest.setUserId(user.getId());
@@ -97,13 +97,15 @@ public class UserManager implements UserService {
         usersAddresses.add(addressCreated);
 
         repository.save(user);
+        return getById(addressRequest.getUserId());
 
     }
 
-// TODO: SİL ÇALIŞMIYOR :(
+
     @Override
-    public void deleteAddressFromUser(UUID addressId, UUID userId) {
+    public GetUserResponse deleteAddressFromUser(UUID addressId, UUID userId) {
        User user = repository.findById(userId).orElseThrow();
+       addressService.deleteOwnerForAddress(user,addressId );
        var userAddresses = user.getAddresses();
        for (Address address: userAddresses){
            if (address.getId() == addressId){
@@ -114,15 +116,10 @@ public class UserManager implements UserService {
        }
        user.setAddresses(userAddresses);
        repository.save(user);
+       return getById(userId);
     }
 
-    private  Set<UUID> getItemsAsUUIDSet(Set<? extends Id> items){
-        Set<UUID> response = new HashSet<>();
-        for (var item :items ){
-            response.add(item.getId());
-        }
-        return response;
-    }
+
 
     private <T extends UserResponseDto> T  mapForUserResponse(User user, T response){
         response.setId(user.getId());

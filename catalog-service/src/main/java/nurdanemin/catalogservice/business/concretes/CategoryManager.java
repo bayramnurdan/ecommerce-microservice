@@ -15,7 +15,9 @@ import nurdanemin.catalogservice.repository.CategoryRepository;
 import nurdanemin.commonpackage.utils.mappers.ModelMapperService;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 @Service
 @AllArgsConstructor
@@ -70,14 +72,18 @@ public class CategoryManager  implements CategoryService {
     }
 
 
-    public List<Category> getCategoriesAsList(List<UUID> idList){
-        var categories = repository.findAllById(idList);
-        return categories;
 
+    public Set<Category> getCategoriesAsSet(Set<UUID> idList){
+        HashSet<Category> response = new HashSet();
+        for(UUID id:idList){
+            response.add(repository.findById(id).orElseThrow());
+
+        }
+        return response;
     }
 
     @Override
-    public void addProductForCategories(Product product, List<UUID>categoryIds) {
+    public void addProductForCategories(Product product, Set<UUID>categoryIds) {
         for(UUID id : categoryIds){
             Category category = repository.findById(id).orElseThrow();
             var categoryProducts = category.getProducts();
