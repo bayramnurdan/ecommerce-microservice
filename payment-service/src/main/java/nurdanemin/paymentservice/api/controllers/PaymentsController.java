@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("api/payments")
@@ -23,7 +25,7 @@ public class PaymentsController {
         return service.getAll();
     }
     @GetMapping("api/{id}")
-    public GetPaymentResponse getById(Long id){
+    public GetPaymentResponse getById(UUID id){
         return service.getById(id);
     }
     @PostMapping

@@ -56,16 +56,22 @@ public class UserManager implements UserService {
     }
 
     @Override
+    public GetUserResponse getByCartId(UUID cartId) {
+       User user = repository.findByCartId(cartId);
+       return getById(user.getId());
+    }
+
+    @Override
     public CreateUserResponse createUser(CreateUserRequest request) {
         if (producer==null){
-            System.out.println("producer DELI");
         }
         rules.checkIfEmailExists(request.getEmail());
         User user = mapper.forRequest().map(request, User.class);
         user.setId(UUID.randomUUID());
         user.setRole(Role.USER);
         User createdUser = repository.save(user);
-        producer.sendMessage(new UserCreatedEvent(createdUser.getId()), "user-created");
+
+       sendUserCreatedEvent(createdUser);
         return mapper.forResponse().map(createdUser, CreateUserResponse.class);
     }
 
@@ -88,6 +94,7 @@ public class UserManager implements UserService {
 
     @Override
     public GetUserResponse addAddressForUser(CreateAddressRequest addressRequest) {
+        //TODO: Change return type
         rules.checkIfExistsById(addressRequest.getUserId());
         User user = repository.findById(addressRequest.getUserId()).orElseThrow();
         addressRequest.setUserId(user.getId());
@@ -129,6 +136,15 @@ public class UserManager implements UserService {
         response.setRole(user.getRole());
         response.setCartId(user.getCartId());
         return response;
+
+    }
+
+    private void sendUserCreatedEvent(User createdUser){
+        UserCreatedEvent event = new UserCreatedEvent();
+        event.setUserId(createdUser.getId());
+        event.setUserLastName(createdUser.getFirstName());
+        event.setUserLastName(createdUser.getLastName());
+        producer.sendMessage(event, "user-created");
 
     }
 

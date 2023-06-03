@@ -14,6 +14,7 @@ import java.util.UUID;
 public interface UserService {
     List<GetAllUsersResponse> getAll();
     GetUserResponse getById(UUID id);
+    GetUserResponse getByCartId(UUID cartId);
 
     CreateUserResponse createUser(CreateUserRequest request);
     UpdateUserResponse updateUser(UUID id, UpdateUserRequest request);

@@ -43,6 +43,8 @@ public class ShoppingCartManager implements ShoppingCartService {
     public GetShoppingCartResponse getById(UUID id) {
         var cart = repository.findById(id).orElseThrow();
         var response = mapForShopppingCartResponse(cart, new GetShoppingCartResponse());
+        response.setUserFirstName(cart.getUserFirstName());
+        response.setUserLastName(cart.getUserLastName());
         response.setCartItemIds(CommonMethods.getItemsAsUUIDSet(cart.getCartItems()));
         return response;
     }
@@ -88,6 +90,17 @@ public class ShoppingCartManager implements ShoppingCartService {
         calculateTotalPrice(cart);
         return getById(shoppingCartId);
     }
+
+    @Override
+    public GetShoppingCartResponse emptyCard(UUID cartId) {
+        ShoppingCart cart = repository.findById(cartId).orElseThrow();
+        for (CartItem item:cart.getCartItems()){
+            item.setCart(null);
+        }
+        calculateTotalPrice(cart);
+        return getById(cartId);
+    }
+
     private void calculateTotalPrice(ShoppingCart cart){
         double sum = 0.0;
         for( CartItem item :cart.getCartItems() ){

@@ -7,11 +7,11 @@ import nurdanemin.paymentservice.business.dto.response.get.GetAllPaymentsRespons
 import nurdanemin.paymentservice.business.dto.response.get.GetPaymentResponse;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface PaymentService {
     List<GetAllPaymentsResponse> getAll();
-    GetPaymentResponse getById(Long id);
+    GetPaymentResponse getById(UUID id);
     CreatePaymentResponse add(CreatePaymentRequest request);
-    void delete(Long id);
     void processPayment(ProcessPaymentRequest request);
 }

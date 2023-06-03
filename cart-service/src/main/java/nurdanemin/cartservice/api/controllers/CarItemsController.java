@@ -5,6 +5,7 @@ import nurdanemin.cartservice.business.abstracts.CartItemService;
 import nurdanemin.cartservice.business.dto.response.get.GetAllCartItemsResponse;
 import nurdanemin.commonpackage.utils.dto.GetCartItemResponse;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,8 +20,8 @@ public class CarItemsController {
     List<GetAllCartItemsResponse> getAll(){
         return service.getAll();
     }
-    @GetMapping
-    GetCartItemResponse getCartItemById(UUID id){
+    @GetMapping("/{id}")
+    GetCartItemResponse getCartItemById(@PathVariable UUID id){
         return service.getById(id);
     }
 }

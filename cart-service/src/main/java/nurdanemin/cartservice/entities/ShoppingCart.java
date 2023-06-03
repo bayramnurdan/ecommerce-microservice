@@ -21,6 +21,9 @@ public class ShoppingCart {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private UUID userId;
+
+    private String userFirstName;
+    private String userLastName;
     private double totalPrice;
 
     @OneToMany(mappedBy = "cart")

@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -20,4 +22,5 @@ public class CreatePaymentRequest {
     private String cardCvv;
     @Min(1)
     private double balance;
+    private UUID userId;
 }

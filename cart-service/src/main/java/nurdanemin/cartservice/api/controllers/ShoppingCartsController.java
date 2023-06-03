@@ -42,5 +42,10 @@ public class ShoppingCartsController {
         return service.updateItemQuantity(shoppingCartId, cartItemId, quantity);
     }
 
+    @PutMapping("empty-cart/{cartId}")
+    public GetShoppingCartResponse emptyCard(@PathVariable  UUID cartId) {
+        return service.emptyCard(cartId);
+    }
+
 
 }

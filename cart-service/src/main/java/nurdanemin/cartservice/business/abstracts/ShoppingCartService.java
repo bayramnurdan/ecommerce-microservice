@@ -16,6 +16,7 @@ public interface ShoppingCartService {
 
     GetShoppingCartResponse deleteItemFromCart(UUID shoppingCartId, UUID cartItemId);
     GetShoppingCartResponse updateItemQuantity(UUID shoppingCartId, UUID cartItemId, int quantity);
+    GetShoppingCartResponse emptyCard(UUID cartId);
 
 
 

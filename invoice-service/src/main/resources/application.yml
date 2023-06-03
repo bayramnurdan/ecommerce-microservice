@@ -1,11 +1,11 @@
 spring:
   application:
-    name: cart-service
+    name: invoice-service
 
   datasource:
     username: postgres
     password: '12345'
-    url: jdbc:postgresql://localhost:5432/cartdb-dev
+    url: jdbc:postgresql://localhost:5432/invoicedb-dev
   jpa:
     properties:
       hibernate:
@@ -44,3 +44,4 @@ resilience4j:
       product-retry:
         max-attempts: 5
         wait-duration: 7s
+

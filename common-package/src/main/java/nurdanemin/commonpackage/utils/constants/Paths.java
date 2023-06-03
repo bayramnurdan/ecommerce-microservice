@@ -23,4 +23,12 @@ public class Paths {
         public static final String ServiceBasePackage = "nurdanemin.orderservice";
 
     }
+    public static class Payment{
+        public static final String ServiceBasePackage = "nurdanemin.paymentservice";
+
+    }
+    public static class Invoice{
+        public static final String ServiceBasePackage = "nurdanemin.invoiceservice";
+
+    }
 }

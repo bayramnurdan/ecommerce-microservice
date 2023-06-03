@@ -32,7 +32,7 @@ public class OrdersController {
     }
 
     @GetMapping("get-all-orders-of/{userId}")
-    List<GetAllOrdersResponse> getAllOrdersOfUser(@PathVariable  UUID userId){
-        return service.getAllOrdersOfUser(userId);
+    List<GetAllOrdersResponse> getAllOrdersOfUser(@PathVariable  UUID cartId){
+        return service.getAllOrdersOfCart(cartId);
     }
 }

@@ -25,6 +25,7 @@ public class Payment {
     private int cardExpirationMonth;
     private String cardCvv;
     private double balance;
+    private UUID userId;
 
 
 }

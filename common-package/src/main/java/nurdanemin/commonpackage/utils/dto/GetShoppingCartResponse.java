@@ -15,8 +15,8 @@ import java.util.UUID;
 @Getter
 @Setter
 public class GetShoppingCartResponse  extends ShoppingCartResponseDto {
-
-
+    private String userFirstName;
+    private String userLastName;
 
     @ElementCollection
     private Set<UUID> cartItemIds = new HashSet<>();

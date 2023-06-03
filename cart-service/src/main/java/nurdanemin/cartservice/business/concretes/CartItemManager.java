@@ -9,6 +9,7 @@ import nurdanemin.cartservice.business.dto.response.get.GetAllCartItemsResponse;
 import nurdanemin.cartservice.entities.CartItem;
 import nurdanemin.cartservice.entities.ShoppingCart;
 import nurdanemin.cartservice.repository.CartItemRepository;
+import nurdanemin.commonpackage.utils.dto.GetCartItemResponse;
 import nurdanemin.commonpackage.utils.dto.ProductClientResponse;
 import nurdanemin.commonpackage.utils.exceptions.BusinessException;
 import nurdanemin.commonpackage.utils.mappers.ModelMapperService;
@@ -33,10 +34,10 @@ public class CartItemManager implements CartItemService {
     }
 
     @Override
-    public CartItem getCartItemById(UUID id) {
-        return  repository.findById(id).orElseThrow();
+    public GetCartItemResponse getById(UUID id) {
+        var cartItem = repository.findById(id);
+        return mapper.forResponse().map(cartItem, GetCartItemResponse.class);
     }
-
 
 
     @Override
