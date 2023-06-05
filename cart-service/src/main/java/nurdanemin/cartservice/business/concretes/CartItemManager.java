@@ -45,9 +45,7 @@ public class CartItemManager implements CartItemService {
         ProductClientResponse info = productClient.getProductInfo(request.getProductId());
 
         if (!info.isSuccess()){
-
             throw new BusinessException("ÜRÜN BİLGİSİNE ULAŞAMADIK");
-
         }
         var item = mapper.forRequest().map(request, CartItem.class);
 

@@ -16,13 +16,10 @@ import java.util.UUID;
 @Setter
 public class GetAllOrderItemsResponse {
     private UUID id;
-
     private UUID productId;
     private String productName;
     private int productQuantity;
     private double totalPrice;
     private  double pricePerUnit;
-
-
     private UUID orderId;
 }

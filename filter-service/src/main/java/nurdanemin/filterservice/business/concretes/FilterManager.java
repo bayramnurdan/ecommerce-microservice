@@ -20,18 +20,16 @@ public class FilterManager implements FilterService {
     @Override
     public List<GetAllFiltersResponse> getAll() {
         List<Filter>filters = repository.findAll();
-        List<GetAllFiltersResponse> response = filters
+        return filters
                 .stream()
                 .map(filter-> mapper.forResponse().map(filter, GetAllFiltersResponse.class))
                 .toList();
-        return response;
     }
 
     @Override
     public GetFilterResponse getById(String id) {
        var filter = repository.findById(id);
-       var response = mapper.forResponse().map(filter, GetFilterResponse.class);
-       return response;
+        return mapper.forResponse().map(filter, GetFilterResponse.class);
     }
 
     @Override

@@ -18,8 +18,7 @@ public class FiltersController {
     private final FilterService service;
 
     @GetMapping
-    public List<GetAllFiltersResponse> getAll(){
-        return service.getAll();
+    public List<GetAllFiltersResponse> getAll(){return service.getAll();
     }
 
     @GetMapping("/{id}")
