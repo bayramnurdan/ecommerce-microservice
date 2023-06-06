@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -26,7 +27,7 @@ public class Filter {
     private int amount;
     private double price;
     private double discount;
-    private List<UUID> categoryIds;
-    private List<String> categoryNames;
+    private Set<UUID> categoryIds;
+    private Set<String> categoryNames;
 
 }

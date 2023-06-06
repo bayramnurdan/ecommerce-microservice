@@ -26,7 +26,7 @@ public class OrderConsumer {
         service.updateShippingStatus(event.getShippingId(), ShippingStatus.RECEIVED);
         log.info("order-ready-for-shipping-created event consumed {}", event);
         }
-    }
+
 
     @KafkaListener(
             topics = "order-received-for-shipping",
@@ -37,5 +37,3 @@ public class OrderConsumer {
         log.info("order-received-for-shipping event consumed {}", event);
     }
 }
-
-

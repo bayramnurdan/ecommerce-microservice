@@ -22,7 +22,6 @@ public class CatalogConsumer {
             groupId = "product-create"
     )
     public void consume(ProductCreatedEvent event) {
-        System.out.println("Geldi");
         var filter = mapper.forRequest().map(event, Filter.class);
         filter.setCategoryIds(event.getCategoryIds());
         filter.setCategoryNames(event.getCategoryNames());

@@ -15,26 +15,28 @@
       <change afterPath="$PROJECT_DIR$/config-server/src/main/resources/application.yml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/config-server/src/test/java/nurdanemin/configserver/ConfigServerApplicationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-getway/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-getway/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-getway/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-getway/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-getway/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-getway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-getway/src/main/java/nurdanemin/apigetway/ApiGatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/nurdanemin/apigetway/ApiGatewayApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-getway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-getway/src/test/java/nurdanemin/apigetway/ApiGetwayApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/test/java/nurdanemin/apigetway/ApiGetwayApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/BrandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/BrandManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/CategoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/CategoryManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/ProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/ProductManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/rules/BrandBusinessRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/rules/BrandBusinessRules.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/rules/CategoryBusinessRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/rules/CategoryBusinessRules.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/rules/ProductBusinessRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/rules/ProductBusinessRules.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/constants/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/constants/Messages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-package/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common-package/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/constants/Paths.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/constants/Paths.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/discovery-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/discovery-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discovery-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/discovery-server/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/filter-service/src/main/java/nurdanemin/filterservice/business/kafka/consumer/CatalogConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/filter-service/src/main/java/nurdanemin/filterservice/business/kafka/consumer/CatalogConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/filter-service/src/main/java/nurdanemin/filterservice/entities/Filter.java" beforeDir="false" afterPath="$PROJECT_DIR$/filter-service/src/main/java/nurdanemin/filterservice/entities/Filter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/filter-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/filter-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shipping-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shipping-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/ShippingServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/ShippingServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/dto/request/update/UpdateShippingRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/dto/request/update/UpdateShippingRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/dto/response/get/GetAllShippingsResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/dto/response/get/GetAllShippingsResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/dto/response/get/GetShippingResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/dto/response/get/GetShippingResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/dto/response/update/UpdateShippingResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/dto/response/update/UpdateShippingResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/kafka/consumer/OrderConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/kafka/consumer/OrderConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/entities/Shipping.java" beforeDir="false" afterPath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/entities/Shipping.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shipping-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/shipping-service/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +95,7 @@
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;331df348329d653862c2adb14918668b&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;12df8c394862ffd0efc1f945fa1f3c5d&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -129,13 +131,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ApiGetwayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="api-gateway" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="nurdanemin.apigetway.ApiGetwayApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -261,6 +256,10 @@
       <workItem from="1686007751516" duration="222000" />
       <workItem from="1686007979401" duration="790000" />
       <workItem from="1686008779675" duration="6038000" />
+      <workItem from="1686059938742" duration="1072000" />
+      <workItem from="1686063495555" duration="1981000" />
+      <workItem from="1686066041904" duration="2364000" />
+      <workItem from="1686068452529" duration="6870000" />
     </task>
     <servers />
   </component>

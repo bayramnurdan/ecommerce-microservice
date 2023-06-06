@@ -9,19 +9,6 @@ services:
     volumes:
       - kafka_data:/opt/kafka/kafka-logs
 
-  keycloak:
-    image: quay.io/keycloak/keycloak:latest
-    container_name: keycloak-ecommerce
-    environment:
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: admin
-    ports:
-      - "8080:8080"
-    command: start-dev
-    volumes:
-      - .:/opt/jboss/keycloak/imports
-
-
   mongodb:
     platform: linux/amd64
     container_name: ecommerce-filterdb
