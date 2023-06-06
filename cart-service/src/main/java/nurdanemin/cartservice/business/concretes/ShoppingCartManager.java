@@ -43,6 +43,7 @@ public class ShoppingCartManager implements ShoppingCartService {
     public GetShoppingCartResponse getById(UUID id) {
         var cart = repository.findById(id).orElseThrow();
         var response = mapForShopppingCartResponse(cart, new GetShoppingCartResponse());
+        //TODO: CLEAN HERE
         response.setUserFirstName(cart.getUserFirstName());
         response.setUserLastName(cart.getUserLastName());
         response.setCartItemIds(CommonMethods.getItemsAsUUIDSet(cart.getCartItems()));
@@ -95,7 +96,7 @@ public class ShoppingCartManager implements ShoppingCartService {
     public GetShoppingCartResponse emptyCard(UUID cartId) {
         ShoppingCart cart = repository.findById(cartId).orElseThrow();
         for (CartItem item:cart.getCartItems()){
-            item.setCart(null);
+           cartItemService.deleteCartItem(item.getId());
         }
         calculateTotalPrice(cart);
         return getById(cartId);
@@ -112,6 +113,8 @@ public class ShoppingCartManager implements ShoppingCartService {
     }
 
     public <T extends ShoppingCartResponseDto> T mapForShopppingCartResponse(ShoppingCart cart, T response){
+        //TODO : sanırım gerek yok
+
         response.setId(cart.getId());
         response.setUserId(cart.getUserId());
         response.setTotalPrice(cart.getTotalPrice());

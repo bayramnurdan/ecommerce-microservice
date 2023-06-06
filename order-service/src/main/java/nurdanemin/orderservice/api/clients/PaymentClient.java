@@ -1,4 +1,4 @@
-package nurdanemin.orderservice.api.controllers.clients;
+package nurdanemin.orderservice.api.clients;
 
 import nurdanemin.commonpackage.utils.dto.CreatePaymentRequest;
 import nurdanemin.commonpackage.utils.dto.CreatePaymentResponse;

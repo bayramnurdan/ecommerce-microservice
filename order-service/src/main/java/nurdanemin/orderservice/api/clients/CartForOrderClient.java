@@ -1,4 +1,4 @@
-package nurdanemin.orderservice.api.controllers.clients;
+package nurdanemin.orderservice.api.clients;
 
 import io.github.resilience4j.retry.annotation.Retry;
 import nurdanemin.commonpackage.utils.dto.GetCartItemResponse;

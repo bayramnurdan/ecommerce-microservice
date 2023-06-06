@@ -48,6 +48,7 @@ public class UserManager implements UserService {
 
     @Override
     public GetUserResponse getById(UUID id) {
+        rules.checkIfExistsById(id);
         User user = repository.findById(id).orElseThrow();
         GetUserResponse response = mapForUserResponse(user, new GetUserResponse());
         response.setAddressesIds(CommonMethods.getItemsAsUUIDSet(user.getAddresses()));
@@ -63,9 +64,7 @@ public class UserManager implements UserService {
 
     @Override
     public CreateUserResponse createUser(CreateUserRequest request) {
-        if (producer==null){
-        }
-        rules.checkIfEmailExists(request.getEmail());
+        rules.checkIfEmailUsedBefore(request.getEmail());
         User user = mapper.forRequest().map(request, User.class);
         user.setId(UUID.randomUUID());
         user.setRole(Role.USER);
@@ -77,7 +76,8 @@ public class UserManager implements UserService {
 
     @Override
     public UpdateUserResponse updateUser(UUID id, UpdateUserRequest request) {
-        rules.checkIfEmailExists(request.getEmail());
+        //TODO: METOD ÜZERİNE TEKRAR  DÜŞÜN
+        rules.checkIfEmailUsedBefore(request.getEmail());
         User user = mapper.forRequest().map(request, User.class);
         user.setId(id);
         User updatedUser = repository.save(user);
@@ -94,7 +94,6 @@ public class UserManager implements UserService {
 
     @Override
     public GetUserResponse addAddressForUser(CreateAddressRequest addressRequest) {
-        //TODO: Change return type
         rules.checkIfExistsById(addressRequest.getUserId());
         User user = repository.findById(addressRequest.getUserId()).orElseThrow();
         addressRequest.setUserId(user.getId());
@@ -111,14 +110,14 @@ public class UserManager implements UserService {
 
     @Override
     public GetUserResponse deleteAddressFromUser(UUID addressId, UUID userId) {
-       User user = repository.findById(userId).orElseThrow();
-       addressService.deleteOwnerForAddress(user,addressId );
-       var userAddresses = user.getAddresses();
-       for (Address address: userAddresses){
-           if (address.getId() == addressId){
-               userAddresses.remove(address);
-               break;
-           }
+        User user = repository.findById(userId).orElseThrow();
+        addressService.deleteOwnerForAddress(user,addressId );
+        var userAddresses = user.getAddresses();
+        for (Address address: userAddresses){
+            if (address.getId() == addressId){
+                userAddresses.remove(address);
+                break;
+            }
 
        }
        user.setAddresses(userAddresses);

@@ -1,4 +1,4 @@
-package nurdanemin.orderservice.api.controllers.clients;
+package nurdanemin.orderservice.api.clients;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;

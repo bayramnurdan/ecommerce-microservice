@@ -1,6 +1,7 @@
 package nurdanemin.userservice.business.rules;
 
 import lombok.AllArgsConstructor;
+import nurdanemin.commonpackage.utils.constants.Messages;
 import nurdanemin.commonpackage.utils.exceptions.BusinessException;
 import nurdanemin.userservice.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -11,15 +12,16 @@ import java.util.UUID;
 @AllArgsConstructor
 public class UserBusinessRules {
     private final UserRepository repository;
-    public void checkIfEmailExists(String email){
+    public void checkIfEmailUsedBefore(String email){
         if (repository.existsByEmail(email)){
-            throw new BusinessException("EMAIL_ALREADY_EXISTS");
+            throw new BusinessException(Messages.User.EmailIsUsedBefore);
         }
     }
 
     public void checkIfExistsById(UUID id){
         if (!repository.existsById(id)){
-            throw new BusinessException("NOT_EXISTS_BY_ID");
+            throw new BusinessException(Messages.User.NotExists);
         }
     }
+
 }

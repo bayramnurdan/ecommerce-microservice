@@ -46,7 +46,7 @@ public class UsersController {
     }
 
     @PutMapping("/add/address")
-    public void addAddresstoUser(@RequestBody CreateAddressRequest addressRequest){
+    public void addAddresstoUser(@Valid @RequestBody CreateAddressRequest addressRequest){
         service.addAddressForUser(addressRequest);
     }
 

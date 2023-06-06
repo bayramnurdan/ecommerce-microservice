@@ -5,10 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd4018d7-7c80-47c4-b162-d42463a104d6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/config-server/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config-server/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config-server/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config-server/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config-server/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config-server/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config-server/src/main/java/nurdanemin/configserver/ConfigServerApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config-server/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config-server/src/test/java/nurdanemin/configserver/ConfigServerApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-getway/src/main/java/nurdanemin/apigetway/ApiGetwayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-getway/src/main/java/nurdanemin/apigetway/ApiGatewayApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/filter-service/src/main/java/nurdanemin/filterservice/api/controllers/FiltersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/filter-service/src/main/java/nurdanemin/filterservice/api/controllers/FiltersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/filter-service/src/main/java/nurdanemin/filterservice/business/concretes/FilterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/filter-service/src/main/java/nurdanemin/filterservice/business/concretes/FilterManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-getway/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-getway/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-getway/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-getway/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-getway/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-getway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-getway/src/main/java/nurdanemin/apigetway/ApiGatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/nurdanemin/apigetway/ApiGatewayApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-getway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-getway/src/test/java/nurdanemin/apigetway/ApiGetwayApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/test/java/nurdanemin/apigetway/ApiGetwayApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/BrandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/BrandManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/CategoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/CategoryManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/ProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/ProductManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/rules/BrandBusinessRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/rules/BrandBusinessRules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/rules/CategoryBusinessRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/rules/CategoryBusinessRules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/rules/ProductBusinessRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/rules/ProductBusinessRules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/constants/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/constants/Messages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discovery-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/discovery-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +45,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -135,6 +161,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ConfigServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="config-server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="nurdanemin.configserver.ConfigServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DiscoveryServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="discovery-server" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="nurdanemin.discoveryserver.DiscoveryServerApplication" />
@@ -226,7 +259,8 @@
       <workItem from="1685814182110" duration="16488000" />
       <workItem from="1686007598163" duration="142000" />
       <workItem from="1686007751516" duration="222000" />
-      <workItem from="1686007979401" duration="557000" />
+      <workItem from="1686007979401" duration="790000" />
+      <workItem from="1686008779675" duration="6038000" />
     </task>
     <servers />
   </component>

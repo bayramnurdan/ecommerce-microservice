@@ -1,7 +1,6 @@
 package nurdanemin.userservice.business.dto.request.create;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,9 +11,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CreateUserRequest {
-    @NotBlank
+    @Size(min = 3, max = 15)
     private String firstName;
-    @NotBlank
+    @Size(min = 3, max = 15)
     private String lastName;
     @Email
     private String email;

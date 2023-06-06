@@ -1,4 +1,4 @@
-package nurdanemin.orderservice.api.controllers.clients;
+package nurdanemin.orderservice.api.clients;
 
 import lombok.extern.slf4j.Slf4j;
 import nurdanemin.commonpackage.utils.dto.CreatePaymentRequest;

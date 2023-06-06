@@ -26,20 +26,17 @@ public class BrandManager implements BrandService {
     @Override
     public List<GetAllBrandsResponse> getAll() {
         var brands = repository.findAll();
-        var response = brands
+        return  brands
                 .stream()
                 .map(brand-> mapper.forResponse().map(brand, GetAllBrandsResponse.class))
                 .toList();
-        return response;
-
     }
 
     @Override
     public GetBrandResponse getById(UUID id) {
         rules.checkIfBrandExists(id);
         var brand = repository.findById(id);
-        var response = mapper.forResponse().map(brand, GetBrandResponse.class);
-        return response;
+        return mapper.forResponse().map(brand, GetBrandResponse.class);
     }
 
     @Override
@@ -48,8 +45,7 @@ public class BrandManager implements BrandService {
         var brand = mapper.forRequest().map(request, Brand.class);
         brand.setId(UUID.randomUUID());
         var createdBrand = repository.save(brand);
-        var response = mapper.forResponse().map(createdBrand, CreateBrandResponse.class);
-        return response;
+        return mapper.forResponse().map(createdBrand, CreateBrandResponse.class);
     }
 
     @Override
@@ -58,8 +54,7 @@ public class BrandManager implements BrandService {
         var brand = mapper.forRequest().map(request, Brand.class);
         brand.setId(id);
         var createdBrand = repository.save(brand);
-        var response = mapper.forResponse().map(createdBrand, UpdateBrandResponse.class);
-        return response;
+        return mapper.forResponse().map(createdBrand, UpdateBrandResponse.class);
     }
 
     @Override

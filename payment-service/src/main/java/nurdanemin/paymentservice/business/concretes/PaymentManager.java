@@ -8,6 +8,7 @@ import nurdanemin.paymentservice.business.abstracts.PaymentService;
 import nurdanemin.commonpackage.utils.dto.CreatePaymentResponse;
 import nurdanemin.paymentservice.business.dto.response.get.GetAllPaymentsResponse;
 import nurdanemin.paymentservice.business.dto.response.get.GetPaymentResponse;
+import nurdanemin.paymentservice.business.rules.PaymentBusinessRules;
 import nurdanemin.paymentservice.entities.Payment;
 import nurdanemin.paymentservice.repository.PaymentRepository;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ import java.util.UUID;
 public class PaymentManager implements PaymentService {
     private final PaymentRepository repository;
     private final ModelMapperService mapper;
+    private final PaymentBusinessRules rules;
     @Override
     public List<GetAllPaymentsResponse> getAll() {
         return repository.findAll()
@@ -29,12 +31,14 @@ public class PaymentManager implements PaymentService {
 
     @Override
     public GetPaymentResponse getById(UUID id) {
+        rules.checkIfPaymentExists(id);
         return mapper.forResponse().map(repository.findById(id).orElseThrow(), GetPaymentResponse.class);
 
     }
 
     @Override
     public CreatePaymentResponse add(CreatePaymentRequest request) {
+        //TODO : CHECK IF PAYMNET VALID METHOD
         var payment = mapper.forRequest().map(request, Payment.class);
         var savedPayment = repository.save(payment);
         return mapper.forResponse().map(savedPayment, CreatePaymentResponse.class);
@@ -44,7 +48,8 @@ public class PaymentManager implements PaymentService {
 
     @Override
     public void processPayment(ProcessPaymentRequest request) {
-        // TODO : BUSİNESS RULES
+        rules.checkIfPaymentExists(request.getPaymentId());
+        rules.checkIfBalanceEnough(request);
         Payment payment = repository.findById(request.getPaymentId()).orElseThrow();
         payment.setBalance(payment.getBalance()- request.getAmount());
         repository.save(payment);

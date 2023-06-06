@@ -14,6 +14,5 @@ public interface OrderService {
     GetOrderResponse getById(UUID id);
     CreateOrderResponse add(CreateOrderRequest request);
     List<GetAllOrdersResponse> getAllOrdersOfCart(UUID cartId);
-    void updateOrderStatus(UUID orderId, OrderStatus status);
 
 }

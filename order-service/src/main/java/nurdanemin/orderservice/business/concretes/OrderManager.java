@@ -9,9 +9,9 @@ import nurdanemin.commonpackage.utils.CommonMethods;
 import nurdanemin.commonpackage.utils.dto.*;
 import nurdanemin.commonpackage.utils.kafka.producer.KafkaProducer;
 import nurdanemin.commonpackage.utils.mappers.ModelMapperService;
-import nurdanemin.orderservice.api.controllers.clients.CartForOrderClient;
-import nurdanemin.orderservice.api.controllers.clients.PaymentClient;
-import nurdanemin.orderservice.api.controllers.clients.ProductForOrderClient;
+import nurdanemin.orderservice.api.clients.CartForOrderClient;
+import nurdanemin.orderservice.api.clients.PaymentClient;
+import nurdanemin.orderservice.api.clients.ProductForOrderClient;
 import nurdanemin.orderservice.business.abstracts.OrderItemService;
 import nurdanemin.orderservice.business.abstracts.OrderService;
 import nurdanemin.orderservice.business.dto.request.create.CreateOrderRequest;
@@ -48,9 +48,9 @@ public class OrderManager implements OrderService {
     @Override
     public GetOrderResponse getById(UUID id) {
         var order = repository.findById(id).orElseThrow();
-       var response = mapper.forResponse().map(order, GetOrderResponse.class);
-       response.setOrderItems(CommonMethods.getItemsAsUUIDSet(order.getOrderItems()));
-       return response;
+        var response = mapper.forResponse().map(order, GetOrderResponse.class);
+        response.setOrderItems(CommonMethods.getItemsAsUUIDSet(order.getOrderItems()));
+        return response;
     }
 
     @Override
@@ -96,16 +96,6 @@ public class OrderManager implements OrderService {
                 .stream()
                 .map(order -> mapper.forResponse().map(order, GetAllOrdersResponse.class))
                 .toList();
-    }
-
-    @Override
-    public void updateOrderStatus(UUID orderId, OrderStatus status) {
-        Order order = repository.findById(orderId).orElseThrow();
-        if (status==OrderStatus.ORDER_ON_SHIPPING_SERVİCE){
-            sendOrderReadyForShippingEvent(order);
-        }
-        order.setStatus(status);
-        repository.save(order);
     }
 
     private void calculateTotalPrice(Order order){

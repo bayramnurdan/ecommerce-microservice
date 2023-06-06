@@ -34,9 +34,9 @@ public class InvoiceManager implements InvoiceService {
 
     @Override
     public CreateInvoiceResponse add(OrderCreatedForInvoiceEvent event) {
-       Invoice invoice = mapper.forRequest().map(event, Invoice.class);
-       invoice.setId(UUID.randomUUID());
-       var savedInvoice = repository.save(invoice);
-       return mapper.forResponse().map(savedInvoice,CreateInvoiceResponse.class );
+        Invoice invoice = mapper.forRequest().map(event, Invoice.class);
+        invoice.setId(UUID.randomUUID());
+        var savedInvoice = repository.save(invoice);
+        return mapper.forResponse().map(savedInvoice,CreateInvoiceResponse.class );
     }
 }

@@ -34,11 +34,10 @@ public class ProductManager implements ProductService {
     @Override
     public List<GetAllProductsResponse> getAll() {
         var products = repository.findAll();
-        var response = products
+        return  products
                 .stream()
                 .map(product -> mapper.forResponse().map(product, GetAllProductsResponse.class))
                 .toList();
-        return response;
     }
 
     @Override
@@ -71,8 +70,7 @@ public class ProductManager implements ProductService {
         product.setId(id);
 
         var updatedProduct = repository.save(product);
-        var response = mapper.forResponse().map(updatedProduct, UpdateProductResponse.class);
-        return response;
+        return mapper.forResponse().map(updatedProduct, UpdateProductResponse.class);
     }
 
     @Override

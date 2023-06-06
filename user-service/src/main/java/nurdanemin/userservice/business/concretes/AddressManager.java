@@ -31,14 +31,16 @@ public class AddressManager implements AddressService {
 
     @Override
     public GetAddressResponse getById(UUID id) {
+        rules.checkIfExistsById(id);
         var address = repository.findById(id).orElseThrow();
         return mapper.forResponse().map(address, GetAddressResponse.class);
     }
 
     @Override
     public Address createAddress(CreateAddressRequest request) {
-        if (rules.checkIfAddressExists(request.getApartmentNumber(), request.getBuilding(), request.getStreet(),
-                request.getDistrict(), request.getCity(), request.getCountry())){
+        if (rules.checkIfAddressExists(request.getApartmentNumber(),
+                request.getBuilding(), request.getStreet(),
+                request.getDistrict(), request.getCity(), request.getCountry())) {
             Address address= repository.findByApartmentNumberAndBuildingAndStreetAndDistrictAndCityAndCountry(
                     request.getApartmentNumber(), request.getBuilding(), request.getStreet(),
                     request.getDistrict(), request.getCity(), request.getCountry());
@@ -51,8 +53,8 @@ public class AddressManager implements AddressService {
     }
 
     @Override
-    public void deleteOwnerForAddress(User user, UUID addresId) {
-        Address address = repository.findById(addresId).orElseThrow();
+    public void deleteOwnerForAddress(User user, UUID addressId) {
+        Address address = repository.findById(addressId).orElseThrow();
         Set<User> owners = address.getUsers();
         owners.remove(user);
         address.setUsers(owners);

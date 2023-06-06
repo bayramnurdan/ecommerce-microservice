@@ -2,6 +2,7 @@ package nurdanemin.catalogservice.business.rules;
 
 import lombok.AllArgsConstructor;
 import nurdanemin.catalogservice.repository.ProductRepository;
+import nurdanemin.commonpackage.utils.constants.Messages;
 import nurdanemin.commonpackage.utils.exceptions.BusinessException;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +14,12 @@ public class ProductBusinessRules {
     private final ProductRepository repository;
     public void checkIfProductExists(UUID id){
         if (!repository.existsById(id)){
-            System.out.println("RULEDA ELENEIYOR");
-            throw new BusinessException(("PRODUCT_DOES_NOT_EXIST"));
+            throw new BusinessException(Messages.Product.NotExists);
         }
     }
     public void checkIfProductExistByNameAndBrand(String name, UUID brandId){
         if (repository.existsByNameIgnoreCaseAndAndBrandId(name, brandId)){
-            throw new BusinessException(("PRODUCT_ALREADY_EXISTS"));
+            throw new BusinessException(Messages.Product.ExistsForBrand);
         }
     }
 }

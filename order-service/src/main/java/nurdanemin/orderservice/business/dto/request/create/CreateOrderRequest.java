@@ -1,6 +1,5 @@
 package nurdanemin.orderservice.business.dto.request.create;
 
-import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -2,13 +2,24 @@ version: '3.8'
 services:
   kafka:
     platform: linux/amd64
-    container_name: kafka-t2
+    container_name: kafka-ecommerce
     image: bashj79/kafka-kraft
     ports:
       - "9092:9092"
     volumes:
       - kafka_data:/opt/kafka/kafka-logs
 
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: keycloak-ecommerce
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    command: start-dev
+    volumes:
+      - .:/opt/jboss/keycloak/imports
 
 
   mongodb:

@@ -9,6 +9,7 @@ import nurdanemin.cartservice.business.dto.response.get.GetAllCartItemsResponse;
 import nurdanemin.cartservice.entities.CartItem;
 import nurdanemin.cartservice.entities.ShoppingCart;
 import nurdanemin.cartservice.repository.CartItemRepository;
+import nurdanemin.commonpackage.utils.constants.Messages;
 import nurdanemin.commonpackage.utils.dto.GetCartItemResponse;
 import nurdanemin.commonpackage.utils.dto.ProductClientResponse;
 import nurdanemin.commonpackage.utils.exceptions.BusinessException;
@@ -26,7 +27,7 @@ public class CartItemManager implements CartItemService {
     @Override
     public List<GetAllCartItemsResponse> getAll() {
         List<CartItem> cartItems = repository.findAll();
-       return    cartItems
+       return   cartItems
                 .stream()
                 .map(cartItem -> mapper.forResponse().map(cartItem, GetAllCartItemsResponse.class))
                 .toList();
@@ -45,7 +46,7 @@ public class CartItemManager implements CartItemService {
         ProductClientResponse info = productClient.getProductInfo(request.getProductId());
 
         if (!info.isSuccess()){
-            throw new BusinessException("ÜRÜN BİLGİSİNE ULAŞAMADIK");
+            throw new BusinessException(Messages.Product.NotExists);
         }
         var item = mapper.forRequest().map(request, CartItem.class);
 

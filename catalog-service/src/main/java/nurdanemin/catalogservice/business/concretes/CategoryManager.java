@@ -28,11 +28,10 @@ public class CategoryManager  implements CategoryService {
     @Override
     public List<GetAllCategoriesResponse> getAll() {
         var categories = repository.findAll();
-        var response = categories
+        return categories
                 .stream()
                 .map(category -> mapper.forResponse().map(category, GetAllCategoriesResponse.class))
                 .toList();
-        return response;
 
     }
 
@@ -40,8 +39,7 @@ public class CategoryManager  implements CategoryService {
     public GetCategoryResponse getById(UUID id) {
         rules.checkIfCategoryExists(id);
        var category = repository.findById(id);
-       var response =mapper.forResponse().map(category, GetCategoryResponse.class);
-       return response;
+        return mapper.forResponse().map(category, GetCategoryResponse.class);
     }
 
     @Override
@@ -50,8 +48,7 @@ public class CategoryManager  implements CategoryService {
       var category = mapper.forRequest().map(request, Category.class);
       category.setId(UUID.randomUUID());
       var createdCategory = repository.save(category);
-      var response = mapper.forResponse().map(createdCategory, CreateCategoryResponse.class);
-      return response;
+        return mapper.forResponse().map(createdCategory, CreateCategoryResponse.class);
     }
 
     @Override
@@ -60,8 +57,7 @@ public class CategoryManager  implements CategoryService {
         var category = mapper.forRequest().map(request, Category.class);
         category.setId(id);
         var updatedCategory = repository.save(category);
-        var response = mapper.forResponse().map(updatedCategory, UpdateCategoryResponse.class);
-        return response;
+        return mapper.forResponse().map(updatedCategory, UpdateCategoryResponse.class);
     }
 
     @Override

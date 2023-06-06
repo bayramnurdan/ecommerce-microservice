@@ -7,6 +7,8 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
+
+
 eureka:
   client:
     fetch-registry: true
