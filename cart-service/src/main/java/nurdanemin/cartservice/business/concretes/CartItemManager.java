@@ -6,6 +6,7 @@ import nurdanemin.cartservice.api.clients.ProductClient;
 import nurdanemin.cartservice.business.abstracts.CartItemService;
 import nurdanemin.cartservice.business.dto.request.create.CreateCartItemRequest;
 import nurdanemin.cartservice.business.dto.response.get.GetAllCartItemsResponse;
+import nurdanemin.cartservice.business.rules.CartItemBusinessRules;
 import nurdanemin.cartservice.entities.CartItem;
 import nurdanemin.cartservice.entities.ShoppingCart;
 import nurdanemin.cartservice.repository.CartItemRepository;
@@ -23,7 +24,8 @@ import java.util.UUID;
 public class CartItemManager implements CartItemService {
     private final CartItemRepository repository;
     private final ModelMapperService mapper;
-    private final ProductClient productClient;
+    private final CartItemBusinessRules rules;
+
     @Override
     public List<GetAllCartItemsResponse> getAll() {
         List<CartItem> cartItems = repository.findAll();
@@ -43,13 +45,8 @@ public class CartItemManager implements CartItemService {
 
     @Override
     public CartItem createCartItem(CreateCartItemRequest request, ShoppingCart cart) {
-        ProductClientResponse info = productClient.getProductInfo(request.getProductId());
-
-        if (!info.isSuccess()){
-            throw new BusinessException(Messages.Product.NotExists);
-        }
+        var info = rules.checkIfProductAvailable(request.getProductId());
         var item = mapper.forRequest().map(request, CartItem.class);
-
         item.setId(UUID.randomUUID());
         item.setPricePerUnit(info.getProductPrice());
         item.setProductName(info.getProductName());

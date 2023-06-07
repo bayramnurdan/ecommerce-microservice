@@ -17,13 +17,13 @@ public class PaymentBusinessRules {
 
     public void checkIfPaymentExists(UUID paymentId){
         if (!repository.existsById(paymentId)){
-            throw new BusinessException(Messages.Payment.NotExists);
+            throw new BusinessException(Messages.Payment.NOT_EXIST);
         }
     }
     public void checkIfBalanceEnough(ProcessPaymentRequest request){
         Payment payment = repository.findById(request.getPaymentId()).orElseThrow();
         if (payment.getBalance()<request.getAmount()){
-            throw new BusinessException(Messages.Payment.NotEnough);
+            throw new BusinessException(Messages.Payment.NOT_ENOUGH);
         }
     }
 }

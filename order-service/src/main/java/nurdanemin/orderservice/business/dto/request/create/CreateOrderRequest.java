@@ -15,6 +15,6 @@ import java.util.UUID;
 @Setter
 public class CreateOrderRequest {
     UUID cartId;
-    CreatePaymentRequest paymentRequest;
+    UUID paymentId;
     CreateShippingRequest shippingRequest;
 }

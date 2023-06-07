@@ -1,6 +1,8 @@
 package nurdanemin.catalogservice.business.dto.request.update;
 
 import jakarta.persistence.ElementCollection;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,9 +16,13 @@ import java.util.UUID;
 @Getter
 @Setter
 public class UpdateProductRequest {
+    @Size(max = 20, min = 2)
     private String name;
+    @Min(1)
     private int amount;
+    @Min(1)
     private double price;
+    @Min(0)
     private double discount;
 
     private UUID brandId;

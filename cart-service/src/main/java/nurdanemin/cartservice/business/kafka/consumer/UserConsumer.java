@@ -20,9 +20,7 @@ public class UserConsumer {
             groupId = "user-create"
     )
     public void consume(UserCreatedEvent event) {
-        service.add(event.getUserId());
+        service.add(event);
         log.info("User created event consumed {}", event);
     }
 }
-
-

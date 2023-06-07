@@ -46,16 +46,15 @@ public class UsersController {
     }
 
     @PutMapping("/add/address")
-    public void addAddresstoUser(@Valid @RequestBody CreateAddressRequest addressRequest){
-        service.addAddressForUser(addressRequest);
+    public GetUserResponse addAddresstoUser(@Valid @RequestBody CreateAddressRequest addressRequest){
+        return service.addAddressForUser(addressRequest);
     }
 
 
 
-    @DeleteMapping("/delete-address-from-user")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public  void deleteAdDressForUser(@RequestParam UUID addressId, @RequestParam UUID userId){
-        service.deleteAddressFromUser(addressId, userId);
+    @PutMapping("/delete-address-from-user")
+    public  GetUserResponse deleteAdDressForUser(@RequestParam UUID addressId, @RequestParam UUID userId){
+        return service.deleteAddressFromUser(addressId, userId);
 
     }
 }

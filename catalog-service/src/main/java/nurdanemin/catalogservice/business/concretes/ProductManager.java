@@ -12,6 +12,7 @@ import nurdanemin.catalogservice.business.dto.response.update.UpdateProductRespo
 import nurdanemin.catalogservice.business.rules.ProductBusinessRules;
 import nurdanemin.catalogservice.entities.Category;
 import nurdanemin.catalogservice.entities.Product;
+import nurdanemin.commonpackage.utils.enums.ProductState;
 import nurdanemin.catalogservice.repository.ProductRepository;
 import nurdanemin.commonpackage.events.catalog.ProductCreatedEvent;
 import nurdanemin.commonpackage.utils.CommonMethods;
@@ -43,24 +44,25 @@ public class ProductManager implements ProductService {
     @Override
     public GetProductResponse getById(UUID id) {
         rules.checkIfProductExists(id);
-       var product = repository.findById(id).orElseThrow();
-       var response = mapper.forResponse().map(product, GetProductResponse.class);
-       response.setCategoryIds(CommonMethods.getItemsAsUUIDSet(product.getCategories()));
-       return response;
+        var product = repository.findById(id).orElseThrow();
+        var response = mapper.forResponse().map(product, GetProductResponse.class);
+        response.setCategoryIds(CommonMethods.getItemsAsUUIDSet(product.getCategories()));
+        return response;
     }
 
     @Override
     public CreateProductResponse create(CreateProductRequest request) {
         rules.checkIfProductExistByNameAndBrand(request.getName(), request.getBrandId());
-       var product = mapper.forRequest().map(request, Product.class);
-       product.setId(UUID.randomUUID());
-       product.setCategories(categoryService.getCategoriesAsSet(request.getCategoryIds()));
-       var createdProduct = repository.save(product);
-       sendKafkaProductCreatedEvent(createdProduct);
-       categoryService.addProductForCategories(createdProduct, CommonMethods.getItemsAsUUIDSet(product.getCategories()));
-       var response = mapper.forResponse().map(createdProduct, CreateProductResponse.class);
-       response.setCategoryIds(CommonMethods.getItemsAsUUIDSet(createdProduct.getCategories()));
-       return response;
+        var product = mapper.forRequest().map(request, Product.class);
+        product.setId(UUID.randomUUID());
+        product.setState(ProductState.INSTOCK);
+        product.setCategories(categoryService.getCategoriesAsSet(request.getCategoryIds()));
+        var createdProduct = repository.save(product);
+        sendKafkaProductCreatedEvent(createdProduct);
+        categoryService.addProductForCategories(createdProduct, CommonMethods.getItemsAsUUIDSet(product.getCategories()));
+        var response = mapper.forResponse().map(createdProduct, CreateProductResponse.class);
+        response.setCategoryIds(CommonMethods.getItemsAsUUIDSet(createdProduct.getCategories()));
+        return response;
     }
 
     @Override
@@ -88,6 +90,7 @@ public class ProductManager implements ProductService {
             Product product = repository.findById(productId).orElseThrow();
             response.setProductPrice(product.getPrice());
             response.setProductName(product.getName());
+            response.setProductState(product.getState());
 
         }catch(BusinessException exception){
             response.setSuccess(false);
@@ -101,8 +104,19 @@ public class ProductManager implements ProductService {
     public void updateQuantity(UUID productId, int updateAmount) {
         Product product = repository.findById(productId).orElseThrow();
         product.setAmount(product.getAmount()+updateAmount);
+        setProductState(product);
         repository.save(product);
 
+    }
+
+    @Override
+    public void setProductState(Product product) {
+        if (product.getAmount()==0){
+            product.setState(ProductState.NOTINSTOCK);
+        }else{
+            product.setState(ProductState.INSTOCK);
+        }
+        repository.save(product);
     }
 
 

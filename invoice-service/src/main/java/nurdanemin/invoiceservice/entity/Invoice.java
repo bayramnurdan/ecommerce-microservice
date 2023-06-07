@@ -25,7 +25,7 @@ public class Invoice {
 
     private LocalDateTime OrderedAt;
     private double totalAmount;
-    private String cardHolder;
+
 
 
 }

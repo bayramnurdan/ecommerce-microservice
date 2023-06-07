@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd4018d7-7c80-47c4-b162-d42463a104d6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/enums/ProductState.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/config-server/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/config-server/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/config-server/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
@@ -14,29 +15,27 @@
       <change afterPath="$PROJECT_DIR$/config-server/src/main/java/nurdanemin/configserver/ConfigServerApplication.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/config-server/src/main/resources/application.yml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/config-server/src/test/java/nurdanemin/configserver/ConfigServerApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/api/controllers/ShippingsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/rules/ShippingBusinessRules.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-package/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common-package/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/constants/Paths.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/constants/Paths.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/discovery-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/discovery-server/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/discovery-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/discovery-server/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/filter-service/src/main/java/nurdanemin/filterservice/business/kafka/consumer/CatalogConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/filter-service/src/main/java/nurdanemin/filterservice/business/kafka/consumer/CatalogConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/filter-service/src/main/java/nurdanemin/filterservice/entities/Filter.java" beforeDir="false" afterPath="$PROJECT_DIR$/filter-service/src/main/java/nurdanemin/filterservice/entities/Filter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/filter-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/filter-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shipping-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shipping-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/ShippingServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/ShippingServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/dto/request/update/UpdateShippingRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/dto/request/update/UpdateShippingRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/dto/response/get/GetAllShippingsResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/dto/response/get/GetAllShippingsResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/dto/response/get/GetShippingResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/dto/response/get/GetShippingResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/dto/response/update/UpdateShippingResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/dto/response/update/UpdateShippingResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/kafka/consumer/OrderConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/kafka/consumer/OrderConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/entities/Shipping.java" beforeDir="false" afterPath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/entities/Shipping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shipping-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/shipping-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/abstracts/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/abstracts/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/ProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/concretes/ProductManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/request/create/CreateBrandRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/request/create/CreateBrandRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/request/create/CreateCategoryRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/request/create/CreateCategoryRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/request/create/CreateProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/request/create/CreateProductRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/request/update/UpdateBrandRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/request/update/UpdateBrandRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/request/update/UpdateCategoryRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/request/update/UpdateCategoryRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/request/update/UpdateProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/request/update/UpdateProductRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/response/get/GetProductResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/dto/response/get/GetProductResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/rules/BrandBusinessRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/rules/BrandBusinessRules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/rules/CategoryBusinessRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/rules/CategoryBusinessRules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/rules/ProductBusinessRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/business/rules/ProductBusinessRules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/entities/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalog-service/src/main/java/nurdanemin/catalogservice/entities/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/constants/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/constants/Messages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/dto/GetShoppingCartResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/dto/GetShoppingCartResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/dto/ProductClientResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/dto/ProductClientResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/dto/ShoppingCartResponseDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/concretes/ShippingManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/concretes/ShippingManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,7 +258,8 @@
       <workItem from="1686059938742" duration="1072000" />
       <workItem from="1686063495555" duration="1981000" />
       <workItem from="1686066041904" duration="2364000" />
-      <workItem from="1686068452529" duration="6870000" />
+      <workItem from="1686068452529" duration="14296000" />
+      <workItem from="1686131582979" duration="9945000" />
     </task>
     <servers />
   </component>

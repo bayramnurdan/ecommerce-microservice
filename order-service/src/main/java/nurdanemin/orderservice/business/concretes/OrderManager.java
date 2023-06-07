@@ -49,7 +49,7 @@ public class OrderManager implements OrderService {
     public GetOrderResponse getById(UUID id) {
         var order = repository.findById(id).orElseThrow();
         var response = mapper.forResponse().map(order, GetOrderResponse.class);
-        response.setOrderItems(CommonMethods.getItemsAsUUIDSet(order.getOrderItems()));
+        response.setOrderItemIds(CommonMethods.getItemsAsUUIDSet(order.getOrderItems()));
         return response;
     }
 
@@ -68,16 +68,16 @@ public class OrderManager implements OrderService {
         }
         order.setTotalOrderPrice(cartResponse.getTotalPrice());
 
-        CreatePaymentResponse paymentResponse = paymentClient.add(request.getPaymentRequest());
-        paymentClient.processPayment(new ProcessPaymentRequest(paymentResponse.getId(), order.getTotalOrderPrice()));
+        paymentClient.processPayment(new ProcessPaymentRequest(request.getPaymentId(), order.getTotalOrderPrice()));
 
         order.setStatus(OrderStatus.ORDER_SUCCESFULL);
         var savedOrder = repository.save(order);
 
         cartClient.emptyCard(request.getCartId());
         updateQuantityForAllOrderItems(order);
+        setOrderForAllOrderItems(order);
 
-        sendOrderCreatedForInvoiceEvent(cartResponse, paymentResponse, savedOrder );
+        sendOrderCreatedForInvoiceEvent(cartResponse,  savedOrder );
 
         sendOrderReceivedForShipping(request.getShippingRequest(), savedOrder.getId());
 
@@ -113,11 +113,16 @@ public class OrderManager implements OrderService {
         }
     }
 
-    private void sendOrderCreatedForInvoiceEvent(GetShoppingCartResponse cartResponse, CreatePaymentResponse paymentRequest, Order order){
+    private void setOrderForAllOrderItems(Order order){
+        for (OrderItem item: order.getOrderItems()){
+            orderItemService.setOrderIdForItem(item.getId(), order);
+        }
+    }
+
+    private void sendOrderCreatedForInvoiceEvent(GetShoppingCartResponse cartResponse, Order order){
         OrderCreatedForInvoiceEvent event = new OrderCreatedForInvoiceEvent();
         event.setCustomerFirstName(cartResponse.getUserFirstName());
         event.setCustomerLastName(cartResponse.getUserLastName());
-        event.setCardHolder(paymentRequest.getCardHolder());
         event.setTotalAmount(order.getTotalOrderPrice());
         event.setOrderedAt(order.getOrderedAt());
         producer.sendMessage(event, "order-created-for-invoice");

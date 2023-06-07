@@ -24,10 +24,9 @@ public class AddressBusinessRules {
 
     public void checkIfExistsById(UUID id){
         if (!repository.existsById(id)){
-            throw new BusinessException(Messages.Address.NotExists);
+            throw new BusinessException(Messages.Address.NOT_EXIST);
         }
     }
 
 
 }
-

@@ -6,9 +6,8 @@ import nurdanemin.catalogservice.business.dto.response.create.CreateProductRespo
 import nurdanemin.catalogservice.business.dto.response.get.GetAllProductsResponse;
 import nurdanemin.catalogservice.business.dto.response.get.GetProductResponse;
 import nurdanemin.catalogservice.business.dto.response.update.UpdateProductResponse;
+import nurdanemin.catalogservice.entities.Product;
 import nurdanemin.commonpackage.utils.dto.ProductClientResponse;
-import org.apache.kafka.clients.ClientResponse;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,5 +20,6 @@ public interface ProductService {
     void delete(UUID id);
     ProductClientResponse getProductInfo(UUID productId);
     void updateQuantity(UUID productId, int updateAmount);
+    void setProductState(Product product);
 
 }

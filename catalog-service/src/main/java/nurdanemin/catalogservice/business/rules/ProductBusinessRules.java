@@ -14,12 +14,12 @@ public class ProductBusinessRules {
     private final ProductRepository repository;
     public void checkIfProductExists(UUID id){
         if (!repository.existsById(id)){
-            throw new BusinessException(Messages.Product.NotExists);
+            throw new BusinessException(Messages.Product.NOT_EXIST);
         }
     }
     public void checkIfProductExistByNameAndBrand(String name, UUID brandId){
         if (repository.existsByNameIgnoreCaseAndAndBrandId(name, brandId)){
-            throw new BusinessException(Messages.Product.ExistsForBrand);
+            throw new BusinessException(Messages.Product.ALREADY_EXISTS_FOR_BRAND);
         }
     }
 }

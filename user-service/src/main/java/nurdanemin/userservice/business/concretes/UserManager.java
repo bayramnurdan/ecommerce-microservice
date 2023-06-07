@@ -58,8 +58,8 @@ public class UserManager implements UserService {
 
     @Override
     public GetUserResponse getByCartId(UUID cartId) {
-       User user = repository.findByCartId(cartId);
-       return getById(user.getId());
+        User user = repository.findByCartId(cartId);
+        return getById(user.getId());
     }
 
     @Override
@@ -69,16 +69,18 @@ public class UserManager implements UserService {
         user.setId(UUID.randomUUID());
         user.setRole(Role.USER);
         User createdUser = repository.save(user);
-
-       sendUserCreatedEvent(createdUser);
+        sendUserCreatedEvent(createdUser);
         return mapper.forResponse().map(createdUser, CreateUserResponse.class);
     }
 
     @Override
     public UpdateUserResponse updateUser(UUID id, UpdateUserRequest request) {
-        //TODO: METOD ÜZERİNE TEKRAR  DÜŞÜN
-        rules.checkIfEmailUsedBefore(request.getEmail());
-        User user = mapper.forRequest().map(request, User.class);
+        rules.checkIfExistsById(id);
+        User userInRepo = repository.findById(id).orElseThrow();
+        if (!userInRepo.getEmail().equals(request.getEmail())){
+            rules.checkIfEmailUsedBefore(request.getEmail());
+        }
+        User user= mapper.forRequest().map(request, User.class);
         user.setId(id);
         User updatedUser = repository.save(user);
         producer.sendMessage(mapper.forResponse().map(updatedUser, UserUpdatedEvent.class), "user-updated");
@@ -118,11 +120,10 @@ public class UserManager implements UserService {
                 userAddresses.remove(address);
                 break;
             }
-
-       }
-       user.setAddresses(userAddresses);
-       repository.save(user);
-       return getById(userId);
+        }
+        user.setAddresses(userAddresses);
+        repository.save(user);
+        return getById(userId);
     }
 
 
@@ -141,7 +142,7 @@ public class UserManager implements UserService {
     private void sendUserCreatedEvent(User createdUser){
         UserCreatedEvent event = new UserCreatedEvent();
         event.setUserId(createdUser.getId());
-        event.setUserLastName(createdUser.getFirstName());
+        event.setUserFirstName(createdUser.getFirstName());
         event.setUserLastName(createdUser.getLastName());
         producer.sendMessage(event, "user-created");
 

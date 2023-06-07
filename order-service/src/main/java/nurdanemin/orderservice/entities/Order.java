@@ -27,6 +27,7 @@ public class Order {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")
     private Set<OrderItem> orderItems = new HashSet<>();
+
     private LocalDateTime orderedAt;
     private UUID shippingId;
 

@@ -1,6 +1,8 @@
 package nurdanemin.orderservice.business.dto.response.create;
 
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +21,7 @@ public class CreateOrderResponse {
     private UUID id;
     private UUID cartId;
     private double totalOrderPrice;
+    @Enumerated(EnumType.STRING)
     private OrderStatus status;
     private Set<UUID> orderItems = new HashSet<>();
     private LocalDateTime orderedAt;

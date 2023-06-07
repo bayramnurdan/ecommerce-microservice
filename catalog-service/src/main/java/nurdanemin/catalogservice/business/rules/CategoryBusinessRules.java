@@ -14,12 +14,12 @@ public class CategoryBusinessRules {
     private final CategoryRepository repository;
     public void checkIfCategoryExists(UUID id){
         if (!repository.existsById(id)){
-            throw new BusinessException(Messages.Category.NotExists);
+            throw new BusinessException(Messages.Category.NOT_EXIST);
         }
     }
    public  void checkIfCategoryExistByName(String name){
         if (repository.existsByNameIgnoreCase(name)){
-            throw new BusinessException(Messages.Category.Exists);
+            throw new BusinessException(Messages.Category.ALREADY_EXISTS);
         }
     }
 }

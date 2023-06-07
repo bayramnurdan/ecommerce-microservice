@@ -14,13 +14,13 @@ public class UserBusinessRules {
     private final UserRepository repository;
     public void checkIfEmailUsedBefore(String email){
         if (repository.existsByEmail(email)){
-            throw new BusinessException(Messages.User.EmailIsUsedBefore);
+            throw new BusinessException(Messages.User.EMAIL_ALREADY_USED_BEFORE);
         }
     }
 
     public void checkIfExistsById(UUID id){
         if (!repository.existsById(id)){
-            throw new BusinessException(Messages.User.NotExists);
+            throw new BusinessException(Messages.User.NOT_EXIST);
         }
     }
 

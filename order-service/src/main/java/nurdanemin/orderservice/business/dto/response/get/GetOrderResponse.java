@@ -1,5 +1,7 @@
 package nurdanemin.orderservice.business.dto.response.get;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,11 +19,11 @@ import java.util.UUID;
 @Setter
 public class GetOrderResponse {
     private UUID id;
-
     private UUID cartId;
     private double totalOrderPrice;
+    @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
-    private Set<UUID> orderItems = new HashSet<>();
+    private Set<UUID> orderItemIds = new HashSet<>();
     private LocalDateTime orderedAt;
 }

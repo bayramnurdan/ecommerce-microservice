@@ -10,11 +10,13 @@ import nurdanemin.commonpackage.utils.dto.CreateShippingResponse;
 import nurdanemin.shippingservice.business.dto.response.get.GetAllShippingsResponse;
 import nurdanemin.shippingservice.business.dto.response.get.GetShippingResponse;
 import nurdanemin.shippingservice.business.dto.response.update.UpdateShippingResponse;
+import nurdanemin.shippingservice.business.rules.ShippingBusinessRules;
 import nurdanemin.shippingservice.entities.Shipping;
 import nurdanemin.shippingservice.entities.ShippingStatus;
 import nurdanemin.shippingservice.repository.ShippingRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 @Service
@@ -22,6 +24,7 @@ import java.util.UUID;
 public class ShippingManager implements ShippingService {
     private final ShippingRepository repository;
     private final ModelMapperService mapper;
+    private final ShippingBusinessRules rules;
     @Override
     public List<GetAllShippingsResponse> getAll() {
         return repository.findAll().stream()
@@ -45,14 +48,21 @@ public class ShippingManager implements ShippingService {
 
     @Override
     public UpdateShippingResponse updateShipping(UUID id, UpdateShippingRequest request) {
-        return null;
+        rules.checkIfShippingSuitableForUpdate(id);
+        Shipping shipping = mapper.forRequest().map(request, Shipping.class);
+        shipping.setId(id);
+        var savedShipping = repository.save(shipping);
+        return mapper.forResponse().map(savedShipping, UpdateShippingResponse.class);
     }
 
     @Override
     public GetShippingResponse updateShippingStatus(UUID id, ShippingStatus status) {
-       Shipping shipping = repository.findById(id).orElseThrow();
-       shipping.setStatus(status);
-       repository.save(shipping);
-       return getById(id);
+        Shipping shipping = repository.findById(id).orElseThrow();
+        if (status.equals(ShippingStatus.RECEIVED)){
+            shipping.setCreatedAt(LocalDateTime.now());
+        }
+        shipping.setStatus(status);
+        repository.save(shipping);
+        return getById(id);
     }
 }

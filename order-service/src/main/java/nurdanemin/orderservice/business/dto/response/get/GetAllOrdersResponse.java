@@ -21,7 +21,5 @@ public class GetAllOrdersResponse {
     private UUID cartId;
     private double totalOrderPrice;
     private OrderStatus status;
-
-    private Set<UUID> orderItems = new HashSet<>();
     private LocalDateTime orderedAt;
 }

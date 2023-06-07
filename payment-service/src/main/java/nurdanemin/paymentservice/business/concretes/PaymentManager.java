@@ -38,7 +38,7 @@ public class PaymentManager implements PaymentService {
 
     @Override
     public CreatePaymentResponse add(CreatePaymentRequest request) {
-        //TODO : CHECK IF PAYMNET VALID METHOD
+        //TODO : CHECK IF PAYMENT EXISTS
         var payment = mapper.forRequest().map(request, Payment.class);
         var savedPayment = repository.save(payment);
         return mapper.forResponse().map(savedPayment, CreatePaymentResponse.class);

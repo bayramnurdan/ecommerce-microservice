@@ -14,12 +14,12 @@ public class BrandBusinessRules {
     private final BrandRepository repository;
     public void checkIfBrandExists(UUID id){
         if (!repository.existsById(id)){
-            throw new BusinessException(Messages.Brand.NotExists);
+            throw new BusinessException(Messages.Brand.NOT_EXIST);
         }
     }
     public void checkIfBrandExistByName(String name){
         if (repository.existsByNameIgnoreCase(name)){
-            throw new BusinessException((Messages.Brand.Exists));
+            throw new BusinessException((Messages.Brand.ALREADY_EXISTS));
         }
     }
 }

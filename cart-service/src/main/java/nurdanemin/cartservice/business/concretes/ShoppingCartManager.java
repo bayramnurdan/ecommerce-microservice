@@ -6,9 +6,9 @@ import lombok.AllArgsConstructor;
 import nurdanemin.cartservice.business.abstracts.CartItemService;
 import nurdanemin.cartservice.business.abstracts.ShoppingCartService;
 import nurdanemin.cartservice.business.dto.request.create.CreateCartItemRequest;
-import nurdanemin.commonpackage.utils.dto.ShoppingCartResponseDto;
 import nurdanemin.cartservice.business.dto.response.create.CreateShoppingCartResponse;
 import nurdanemin.cartservice.business.dto.response.get.GetAllShoppingCartsResponse;
+import nurdanemin.commonpackage.events.user.UserCreatedEvent;
 import nurdanemin.commonpackage.utils.dto.GetShoppingCartResponse;
 import nurdanemin.cartservice.entities.CartItem;
 import nurdanemin.cartservice.entities.ShoppingCart;
@@ -34,31 +34,27 @@ public class ShoppingCartManager implements ShoppingCartService {
 
     @Override
     public List<GetAllShoppingCartsResponse> getAll() {
-       var carts = repository.findAll();
-       return carts.stream().map(cart-> mapper.forResponse()
-               .map(cart, GetAllShoppingCartsResponse.class)).toList();
+        var carts = repository.findAll();
+        return carts.stream().map(cart-> mapCartToGetAllShoppingCartsResponse(cart)).toList();
     }
 
     @Override
     public GetShoppingCartResponse getById(UUID id) {
         var cart = repository.findById(id).orElseThrow();
-        var response = mapForShopppingCartResponse(cart, new GetShoppingCartResponse());
-        //TODO: CLEAN HERE
-        response.setUserFirstName(cart.getUserFirstName());
-        response.setUserLastName(cart.getUserLastName());
-        response.setCartItemIds(CommonMethods.getItemsAsUUIDSet(cart.getCartItems()));
-        return response;
+        return mapCartToGetShoppingCartResponse(cart);
     }
 
     @Override
-    public CreateShoppingCartResponse add(UUID userId) {
+    public CreateShoppingCartResponse add(UserCreatedEvent event) {
         ShoppingCart cart = new ShoppingCart();
         cart.setId(UUID.randomUUID());
-        cart.setUserId(userId);
+        cart.setUserId(event.getUserId());
+        cart.setUserFirstName(event.getUserFirstName());
+        cart.setUserLastName(event.getUserLastName());
         var createdCart = repository.save(cart);
-        ShoppingCartCreatedEvent event = new ShoppingCartCreatedEvent();
-        event.setCartId(createdCart.getId());
-        event.setUserId(userId);
+        ShoppingCartCreatedEvent postEvent = new ShoppingCartCreatedEvent();
+        postEvent.setCartId(createdCart.getId());
+        postEvent.setUserId(event.getUserId());
         producer.sendMessage(event, "shopping-cart-for-user-created");
         return mapper.forResponse().map(createdCart, CreateShoppingCartResponse.class);
     }
@@ -94,32 +90,44 @@ public class ShoppingCartManager implements ShoppingCartService {
 
     @Override
     public GetShoppingCartResponse emptyCard(UUID cartId) {
+        System.out.println("empty cart isteği geldi");
         ShoppingCart cart = repository.findById(cartId).orElseThrow();
         for (CartItem item:cart.getCartItems()){
-           cartItemService.deleteCartItem(item.getId());
+            cartItemService.deleteCartItem(item.getId());
         }
-        calculateTotalPrice(cart);
+        cart.setTotalPrice(0.0);
+        System.out.println("Hesapla kartı");
         return getById(cartId);
     }
 
     private void calculateTotalPrice(ShoppingCart cart){
         double sum = 0.0;
         for( CartItem item :cart.getCartItems() ){
+            System.out.println("Buraya düştü mü gerçekten?");
             sum += item.getPricePerUnit()* item.getQuantity();
         }
         cart.setTotalPrice(sum);
         repository.save(cart);
 
     }
-
-    public <T extends ShoppingCartResponseDto> T mapForShopppingCartResponse(ShoppingCart cart, T response){
-        //TODO : sanırım gerek yok
-
+    private GetShoppingCartResponse mapCartToGetShoppingCartResponse(ShoppingCart cart){
+        var response = new GetShoppingCartResponse();
         response.setId(cart.getId());
-        response.setUserId(cart.getUserId());
+        response.setUserFirstName(cart.getUserFirstName());
+        response.setUserLastName(cart.getUserLastName());
+        response.setCartItemIds(CommonMethods.getItemsAsUUIDSet(cart.getCartItems()));
         response.setTotalPrice(cart.getTotalPrice());
         return response;
     }
+    private GetAllShoppingCartsResponse mapCartToGetAllShoppingCartsResponse(ShoppingCart cart){
+        var response = new GetAllShoppingCartsResponse();
+        response.setId(cart.getId());
+        response.setUserId(cart.getUserId());
+        response.setCartItemIds(CommonMethods.getItemsAsUUIDSet(cart.getCartItems()));
+        response.setTotalPrice(cart.getTotalPrice());
+        return response;
+    }
+
 
 
 

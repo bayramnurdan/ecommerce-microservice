@@ -5,8 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import nurdanemin.commonpackage.utils.enums.ProductState;
 
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -32,6 +32,9 @@ public class Product   {
     @ManyToMany
     @JoinColumn(name = "category_id")
     private Set<Category> categories;
+
+    @Enumerated(EnumType.STRING)
+    private ProductState state;
 
 
 
