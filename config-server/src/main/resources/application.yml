@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        default-label: main
+        git:
+          uri: https://github.com/bayramnurdan/config-server-ecommerce
+  profiles:
+    active: dev
+server:
+  port: 8888
