@@ -61,6 +61,7 @@ public class ShoppingCartManager implements ShoppingCartService {
 
     @Override
     public GetShoppingCartResponse addtoCart(UUID cartId, CreateCartItemRequest request) {
+        //TODO: ADD BUSINESS RULES
         ShoppingCart cart = repository.findById(cartId).orElseThrow();
         Set<CartItem> cartItems = cart.getCartItems();
         CartItem cartItem = cartItemService.createCartItem(request, cart);
@@ -68,8 +69,6 @@ public class ShoppingCartManager implements ShoppingCartService {
         var cartSaved = repository.save(cart);
         calculateTotalPrice(cartSaved);
         return getById(cartId);
-
-
     }
 
     @Override
@@ -94,13 +93,14 @@ public class ShoppingCartManager implements ShoppingCartService {
         for (CartItem item:cart.getCartItems()){
             cartItemService.deleteCartItem(item.getId());
         }
+        cart.setTotalPrice(0.0);
+        repository.save(cart);
         return getById(cartId);
     }
 
     private void calculateTotalPrice(ShoppingCart cart){
         double sum = 0.0;
         for( CartItem item :cart.getCartItems() ){
-            System.out.println("Buraya düştü mü gerçekten?");
             sum += item.getPricePerUnit()* item.getQuantity();
         }
         cart.setTotalPrice(sum);
@@ -117,6 +117,7 @@ public class ShoppingCartManager implements ShoppingCartService {
         response.setTotalPrice(cart.getTotalPrice());
         return response;
     }
+
     private GetAllShoppingCartsResponse mapCartToGetAllShoppingCartsResponse(ShoppingCart cart){
         var response = new GetAllShoppingCartsResponse();
         response.setId(cart.getId());

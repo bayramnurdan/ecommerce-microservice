@@ -21,6 +21,5 @@ public class GetAllCartItemsResponse {
     private String productName;
     private int productQuantity;
     private  double pricePerUnit;
-
     private UUID shoppingCartId;
 }

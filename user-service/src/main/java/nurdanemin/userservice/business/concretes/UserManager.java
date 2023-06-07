@@ -82,7 +82,7 @@ public class UserManager implements UserService {
         User user= mapper.forRequest().map(request, User.class);
         user.setId(id);
         User updatedUser = repository.save(user);
-        producer.sendMessage(mapper.forResponse().map(updatedUser, UserUpdatedEvent.class), "user-updated");
+        //producer.sendMessage(mapper.forResponse().map(updatedUser, UserUpdatedEvent.class), "user-updated");
         return mapper.forResponse().map(updatedUser, UpdateUserResponse.class);
     }
 

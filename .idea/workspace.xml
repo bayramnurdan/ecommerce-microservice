@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd4018d7-7c80-47c4-b162-d42463a104d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/events/shipping/ShippingCreatedEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/concretes/ShippingManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/business/concretes/ShippingManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/entities/Shipping.java" beforeDir="false" afterPath="$PROJECT_DIR$/shipping-service/src/main/java/nurdanemin/shippingservice/entities/Shipping.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/dto/GetShoppingCartResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-package/src/main/java/nurdanemin/commonpackage/utils/dto/GetShoppingCartResponse.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,7 +230,8 @@
       <workItem from="1686063495555" duration="1981000" />
       <workItem from="1686066041904" duration="2364000" />
       <workItem from="1686068452529" duration="14296000" />
-      <workItem from="1686131582979" duration="18403000" />
+      <workItem from="1686131582979" duration="21466000" />
+      <workItem from="1686174409756" duration="2952000" />
     </task>
     <servers />
   </component>

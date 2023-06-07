@@ -16,12 +16,14 @@ import java.util.UUID;
 @RequestMapping("/api/cartitems")
 public class CarItemsController {
     private final CartItemService service;
+
     @GetMapping
-    List<GetAllCartItemsResponse> getAll(){
+    public List<GetAllCartItemsResponse> getAll(){
         return service.getAll();
     }
+
     @GetMapping("/{id}")
-    GetCartItemResponse getCartItemById(@PathVariable UUID id){
+    public GetCartItemResponse getCartItemById(@PathVariable UUID id){
         return service.getById(id);
     }
 }

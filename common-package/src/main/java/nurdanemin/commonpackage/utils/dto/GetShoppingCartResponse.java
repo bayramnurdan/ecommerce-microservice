@@ -1,7 +1,6 @@
 package nurdanemin.commonpackage.utils.dto;
 
 import jakarta.persistence.ElementCollection;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
