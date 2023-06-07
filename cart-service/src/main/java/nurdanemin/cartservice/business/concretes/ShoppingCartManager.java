@@ -55,7 +55,7 @@ public class ShoppingCartManager implements ShoppingCartService {
         ShoppingCartCreatedEvent postEvent = new ShoppingCartCreatedEvent();
         postEvent.setCartId(createdCart.getId());
         postEvent.setUserId(event.getUserId());
-        producer.sendMessage(event, "shopping-cart-for-user-created");
+        producer.sendMessage(postEvent, "shopping-cart-created");
         return mapper.forResponse().map(createdCart, CreateShoppingCartResponse.class);
     }
 
@@ -90,13 +90,10 @@ public class ShoppingCartManager implements ShoppingCartService {
 
     @Override
     public GetShoppingCartResponse emptyCard(UUID cartId) {
-        System.out.println("empty cart isteği geldi");
         ShoppingCart cart = repository.findById(cartId).orElseThrow();
         for (CartItem item:cart.getCartItems()){
             cartItemService.deleteCartItem(item.getId());
         }
-        cart.setTotalPrice(0.0);
-        System.out.println("Hesapla kartı");
         return getById(cartId);
     }
 
@@ -115,6 +112,7 @@ public class ShoppingCartManager implements ShoppingCartService {
         response.setId(cart.getId());
         response.setUserFirstName(cart.getUserFirstName());
         response.setUserLastName(cart.getUserLastName());
+        response.setUserId(cart.getUserId());
         response.setCartItemIds(CommonMethods.getItemsAsUUIDSet(cart.getCartItems()));
         response.setTotalPrice(cart.getTotalPrice());
         return response;

@@ -20,5 +20,5 @@ public class GetInvoiceResponse {
 
     private LocalDateTime OrderedAt;
     private double totalAmount;
-    private String cardHolder;
+
 }

@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.UUID;
 
-@FeignClient(name = "cart-service", fallback = CartForOrderClientFallback.class)
-public interface CartForOrderClient {
+@FeignClient(name = "cart-service", fallback = CartClientFallback.class)
+public interface CartClient {
     @Retry(name = "cart-retry")
     @GetMapping("api/shoppingcarts/{cartId}")
     public GetShoppingCartResponse getById(@PathVariable UUID cartId);
@@ -22,5 +22,5 @@ public interface CartForOrderClient {
 
     @Retry(name="cart-empty-retry")
     @PutMapping("api/shoppingcarts/empty-cart/{cartId}")
-    public void emptyCard(@PathVariable  UUID cartId);
+    void emptyCard(@PathVariable  UUID cartId);
 }

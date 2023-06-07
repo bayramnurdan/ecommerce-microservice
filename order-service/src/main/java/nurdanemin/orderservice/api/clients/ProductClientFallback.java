@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Slf4j
 @Component
-public class ProductForOrderClientFallback implements ProductForOrderClient {
+public class ProductClientFallback implements ProductClient {
     @Override
     public void updateQuantity(UUID productId, int updateAmount) {
 

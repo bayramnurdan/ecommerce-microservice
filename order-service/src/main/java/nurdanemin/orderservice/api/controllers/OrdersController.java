@@ -22,7 +22,7 @@ public class OrdersController {
         return service.getAll();
     }
     @GetMapping("{id}")
-    GetOrderResponse getById(UUID id){
+    GetOrderResponse getById(@PathVariable UUID id){
         return service.getById(id);
     }
 

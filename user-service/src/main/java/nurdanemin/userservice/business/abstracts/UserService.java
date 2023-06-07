@@ -15,11 +15,9 @@ public interface UserService {
     List<GetAllUsersResponse> getAll();
     GetUserResponse getById(UUID id);
     GetUserResponse getByCartId(UUID cartId);
-
     CreateUserResponse createUser(CreateUserRequest request);
     UpdateUserResponse updateUser(UUID id, UpdateUserRequest request);
     void addCartForUser(UUID userId, UUID cartId);
     GetUserResponse addAddressForUser(CreateAddressRequest addressRequest);
-
     GetUserResponse deleteAddressFromUser( UUID userId, UUID addressId);
 }

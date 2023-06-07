@@ -3,6 +3,8 @@ package nurdanemin.shippingservice.business.concretes;
 import lombok.AllArgsConstructor;
 import nurdanemin.commonpackage.events.order.OrderReadyForShippingEvent;
 import nurdanemin.commonpackage.events.order.OrderReceivedForShippingEvent;
+import nurdanemin.commonpackage.events.shipping.ShippingCreatedEvent;
+import nurdanemin.commonpackage.utils.kafka.producer.KafkaProducer;
 import nurdanemin.commonpackage.utils.mappers.ModelMapperService;
 import nurdanemin.shippingservice.business.abstracts.ShippingService;
 import nurdanemin.shippingservice.business.dto.request.update.UpdateShippingRequest;
@@ -25,6 +27,7 @@ public class ShippingManager implements ShippingService {
     private final ShippingRepository repository;
     private final ModelMapperService mapper;
     private final ShippingBusinessRules rules;
+    private final KafkaProducer producer;
     @Override
     public List<GetAllShippingsResponse> getAll() {
         return repository.findAll().stream()
@@ -41,8 +44,10 @@ public class ShippingManager implements ShippingService {
     public CreateShippingResponse add(OrderReceivedForShippingEvent event) {
         Shipping shipping = mapper.forRequest().map(event, Shipping.class);
         shipping.setId(UUID.randomUUID());
+        shipping.setOrderId(event.getOrderId());
         shipping.setStatus(ShippingStatus.NOT_STARTED);
         var savedShipping = repository.save(shipping);
+
         return mapper.forResponse().map(savedShipping, CreateShippingResponse.class);
     }
 
@@ -64,5 +69,12 @@ public class ShippingManager implements ShippingService {
         shipping.setStatus(status);
         repository.save(shipping);
         return getById(id);
+    }
+
+    private void sendShippingCreatedEvent(Shipping shipping){
+        ShippingCreatedEvent event = new ShippingCreatedEvent();
+        event.setShippingId(shipping.getId());
+        event.setOrderId(shipping.getOrderId());
+        producer.sendMessage(event, "shipping-created");
     }
 }

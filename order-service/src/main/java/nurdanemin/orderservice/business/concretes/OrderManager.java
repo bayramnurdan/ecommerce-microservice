@@ -2,16 +2,17 @@ package nurdanemin.orderservice.business.concretes;
 
 
 import lombok.AllArgsConstructor;
-import nurdanemin.commonpackage.events.order.OrderCreatedForInvoiceEvent;
+import nurdanemin.commonpackage.events.order.OrderCreatedEvent;
 import nurdanemin.commonpackage.events.order.OrderReadyForShippingEvent;
 import nurdanemin.commonpackage.events.order.OrderReceivedForShippingEvent;
+import nurdanemin.commonpackage.events.shipping.ShippingCreatedEvent;
 import nurdanemin.commonpackage.utils.CommonMethods;
 import nurdanemin.commonpackage.utils.dto.*;
 import nurdanemin.commonpackage.utils.kafka.producer.KafkaProducer;
 import nurdanemin.commonpackage.utils.mappers.ModelMapperService;
-import nurdanemin.orderservice.api.clients.CartForOrderClient;
+import nurdanemin.orderservice.api.clients.CartClient;
 import nurdanemin.orderservice.api.clients.PaymentClient;
-import nurdanemin.orderservice.api.clients.ProductForOrderClient;
+import nurdanemin.orderservice.api.clients.ProductClient;
 import nurdanemin.orderservice.business.abstracts.OrderItemService;
 import nurdanemin.orderservice.business.abstracts.OrderService;
 import nurdanemin.orderservice.business.dto.request.create.CreateOrderRequest;
@@ -33,11 +34,11 @@ import java.util.UUID;
 @AllArgsConstructor
 public class OrderManager implements OrderService {
     private final OrderRepository repository;
-    private final CartForOrderClient cartClient;
+    private final CartClient cartClient;
     private final OrderItemService orderItemService;
     private final ModelMapperService mapper;
     private final PaymentClient paymentClient;
-    private final ProductForOrderClient productClient;
+    private final ProductClient productClient;
     private final KafkaProducer producer;
     @Override
     public List<GetAllOrdersResponse> getAll() {
@@ -49,7 +50,7 @@ public class OrderManager implements OrderService {
     public GetOrderResponse getById(UUID id) {
         var order = repository.findById(id).orElseThrow();
         var response = mapper.forResponse().map(order, GetOrderResponse.class);
-        response.setOrderItemIds(CommonMethods.getItemsAsUUIDSet(order.getOrderItems()));
+        response.setItemIds(CommonMethods.getItemsAsUUIDSet(order.getOrderItems()));
         return response;
     }
 
@@ -66,11 +67,12 @@ public class OrderManager implements OrderService {
             var orderItem = orderItemService.add(cartItemResponse);
             items.add(orderItem);
         }
+        order.setOrderItems(items);
         order.setTotalOrderPrice(cartResponse.getTotalPrice());
 
         paymentClient.processPayment(new ProcessPaymentRequest(request.getPaymentId(), order.getTotalOrderPrice()));
 
-        order.setStatus(OrderStatus.ORDER_SUCCESFULL);
+        order.setStatus(OrderStatus.ORDER_SUCCESSFUL);
         var savedOrder = repository.save(order);
 
         cartClient.emptyCard(request.getCartId());
@@ -83,7 +85,7 @@ public class OrderManager implements OrderService {
 
         var response = mapper.forResponse().map(savedOrder, CreateOrderResponse.class);
         response.setCartId(request.getCartId());
-        response.setOrderItems(CommonMethods.getItemsAsUUIDSet(savedOrder.getOrderItems()));
+        response.setItemIds(CommonMethods.getItemsAsUUIDSet(savedOrder.getOrderItems()));
         return response;
     }
 
@@ -96,6 +98,13 @@ public class OrderManager implements OrderService {
                 .stream()
                 .map(order -> mapper.forResponse().map(order, GetAllOrdersResponse.class))
                 .toList();
+    }
+
+    @Override
+    public void addShippingIdForOrder(ShippingCreatedEvent event) {
+        Order order = repository.findById(event.getOrderId()).orElseThrow();
+        order.setShippingId(event.getShippingId());
+        repository.save(order);
     }
 
     private void calculateTotalPrice(Order order){
@@ -120,18 +129,18 @@ public class OrderManager implements OrderService {
     }
 
     private void sendOrderCreatedForInvoiceEvent(GetShoppingCartResponse cartResponse, Order order){
-        OrderCreatedForInvoiceEvent event = new OrderCreatedForInvoiceEvent();
+        OrderCreatedEvent event = new OrderCreatedEvent();
         event.setCustomerFirstName(cartResponse.getUserFirstName());
         event.setCustomerLastName(cartResponse.getUserLastName());
         event.setTotalAmount(order.getTotalOrderPrice());
         event.setOrderedAt(order.getOrderedAt());
-        producer.sendMessage(event, "order-created-for-invoice");
+        producer.sendMessage(event, "order-created");
     }
 
     private void sendOrderReadyForShippingEvent(Order order){
         OrderReadyForShippingEvent  event = new OrderReadyForShippingEvent();
         event.setShippingId(order.getShippingId());
-        producer.sendMessage(event, "order-ready-for-shipping-created");
+        producer.sendMessage(event, "order-ready-for-shipping");
     }
 
     private void sendOrderReceivedForShipping(CreateShippingRequest request, UUID orderId){

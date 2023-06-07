@@ -22,6 +22,7 @@ public class Shipping {
     private String receiversLastName;
     private UUID addressId;
     private LocalDateTime createdAt;
+    private UUID orderId;
     @Enumerated(EnumType.STRING)
     private ShippingStatus status;
 

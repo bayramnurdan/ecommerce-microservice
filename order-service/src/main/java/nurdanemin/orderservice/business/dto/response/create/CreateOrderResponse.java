@@ -23,6 +23,6 @@ public class CreateOrderResponse {
     private double totalOrderPrice;
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
-    private Set<UUID> orderItems = new HashSet<>();
+    private Set<UUID> itemIds;
     private LocalDateTime orderedAt;
 }

@@ -44,8 +44,8 @@ public class OrderItemManager implements OrderItemService {
         return repository.save(orderItem);
 
     }
-    public void setOrderIdForItem(UUID OrderItemId, Order order){
-        OrderItem orderItem = new OrderItem();
+    public void setOrderIdForItem(UUID orderItemId, Order order){
+        OrderItem orderItem = repository.findById(orderItemId).orElseThrow();
         orderItem.setOrder(order);
         repository.save(orderItem);
 

@@ -22,11 +22,11 @@ public class AddressManager implements AddressService {
     private final AddressBusinessRules rules;
     @Override
     public List<GetAllAddressesResponse> getAll() {
-       var addresses = repository.findAll();
-       return addresses
-               .stream()
-               .map(address -> (mapper.forResponse().map(address, GetAllAddressesResponse.class)))
-               .toList();
+        var addresses = repository.findAll();
+        return addresses
+                .stream()
+                .map(address -> (mapper.forResponse().map(address, GetAllAddressesResponse.class)))
+                .toList();
     }
 
     @Override
@@ -41,10 +41,9 @@ public class AddressManager implements AddressService {
         if (rules.checkIfAddressExists(request.getApartmentNumber(),
                 request.getBuilding(), request.getStreet(),
                 request.getDistrict(), request.getCity(), request.getCountry())) {
-            Address address= repository.findByApartmentNumberAndBuildingAndStreetAndDistrictAndCityAndCountry(
+            return repository.findByApartmentNumberAndBuildingAndStreetAndDistrictAndCityAndCountry(
                     request.getApartmentNumber(), request.getBuilding(), request.getStreet(),
                     request.getDistrict(), request.getCity(), request.getCountry());
-            return address;
         }
 
         Address address = mapper.forResponse().map(request, Address.class);
@@ -59,7 +58,6 @@ public class AddressManager implements AddressService {
         owners.remove(user);
         address.setUsers(owners);
         repository.save(address);
-
     }
 
 }

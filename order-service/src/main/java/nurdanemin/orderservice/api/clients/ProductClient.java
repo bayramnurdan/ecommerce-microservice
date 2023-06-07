@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.UUID;
 
-@FeignClient(name="catolog-service", fallback = ProductForOrderClientFallback.class)
-public interface ProductForOrderClient {
+@FeignClient(name="catalog-service", fallback = ProductClientFallback.class)
+public interface ProductClient {
     @PutMapping("/api/products/update-quantity/{productId}")
     public void updateQuantity(@PathVariable UUID productId, @RequestParam int updateAmount);
 }

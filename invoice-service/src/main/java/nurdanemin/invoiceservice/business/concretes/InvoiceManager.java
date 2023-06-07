@@ -1,7 +1,7 @@
 package nurdanemin.invoiceservice.business.concretes;
 
 import lombok.AllArgsConstructor;
-import nurdanemin.commonpackage.events.order.OrderCreatedForInvoiceEvent;
+import nurdanemin.commonpackage.events.order.OrderCreatedEvent;
 import nurdanemin.commonpackage.utils.mappers.ModelMapperService;
 import nurdanemin.invoiceservice.business.abstracts.InvoiceService;
 import nurdanemin.invoiceservice.business.dto.response.create.CreateInvoiceResponse;
@@ -33,7 +33,7 @@ public class InvoiceManager implements InvoiceService {
     }
 
     @Override
-    public CreateInvoiceResponse add(OrderCreatedForInvoiceEvent event) {
+    public CreateInvoiceResponse add(OrderCreatedEvent event) {
         Invoice invoice = mapper.forRequest().map(event, Invoice.class);
         invoice.setId(UUID.randomUUID());
         var savedInvoice = repository.save(invoice);

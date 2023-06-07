@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 @Setter
-public class OrderCreatedForInvoiceEvent implements Event {
+public class OrderCreatedEvent implements Event {
     private String customerFirstName;
     private String customerLastName;
     private double totalAmount;

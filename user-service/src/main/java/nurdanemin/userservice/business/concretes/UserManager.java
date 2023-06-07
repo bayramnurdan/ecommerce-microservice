@@ -3,7 +3,6 @@ package nurdanemin.userservice.business.concretes;
 import lombok.AllArgsConstructor;
 
 import nurdanemin.commonpackage.events.user.UserCreatedEvent;
-import nurdanemin.commonpackage.events.user.UserUpdatedEvent;
 import nurdanemin.commonpackage.utils.CommonMethods;
 import nurdanemin.commonpackage.utils.kafka.producer.KafkaProducer;
 import nurdanemin.commonpackage.utils.mappers.ModelMapperService;
@@ -89,6 +88,7 @@ public class UserManager implements UserService {
 
     @Override
     public void addCartForUser(UUID userId, UUID cartId) {
+        System.out.println("add cart for user");
         User user = repository.findById(userId).orElseThrow();
         user.setCartId(cartId);
         repository.save(user);

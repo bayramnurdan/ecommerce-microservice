@@ -1,5 +1,6 @@
 package nurdanemin.userservice.business.kafka.consumer;
 
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import nurdanemin.commonpackage.events.catalog.ProductCreatedEvent;
@@ -11,17 +12,17 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class ShoppingCartConsumer {
     private final UserService service;
     private final ModelMapperService mapper;
 
     @KafkaListener(
-            topics = "shopping-cart-for-user-created",
-            groupId = "shopping-cart-for-user-create"
+            topics = "shopping-cart-created",
+            groupId = "shopping-cart-create"
     )
     public void consume(ShoppingCartCreatedEvent event) {
         service.addCartForUser(event.getUserId(), event.getCartId());
-        log.info("Shopping cart for user  created event consumed {}", event);
+        log.info("Shopping cart  created event consumed {}", event);
     }
 }

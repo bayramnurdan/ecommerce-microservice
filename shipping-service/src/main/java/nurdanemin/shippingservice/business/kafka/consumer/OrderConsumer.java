@@ -19,12 +19,12 @@ public class OrderConsumer {
     private final ModelMapperService mapper;
 
     @KafkaListener(
-            topics = "order-ready-for-shipping-created",
-            groupId = "order-ready-for-shipping-create"
+            topics = "order-ready-for-shipping",
+            groupId = "order-ready-shipping"
         )
     public void consume(OrderReadyForShippingEvent event) {
         service.updateShippingStatus(event.getShippingId(), ShippingStatus.RECEIVED);
-        log.info("order-ready-for-shipping-created event consumed {}", event);
+        log.info("order-ready-for-shipping event consumed {}", event);
         }
 
 

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.UUID;
 @Slf4j
 @Component
-public class CartForOrderClientFallback implements CartForOrderClient {
+public class CartClientFallback implements CartClient {
     @Override
     public GetShoppingCartResponse getById(UUID cartId) {
         return null;

@@ -21,9 +21,8 @@ public class GetOrderResponse {
     private UUID id;
     private UUID cartId;
     private double totalOrderPrice;
-    @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
-    private Set<UUID> orderItemIds = new HashSet<>();
+    private Set<UUID> itemIds;
     private LocalDateTime orderedAt;
 }

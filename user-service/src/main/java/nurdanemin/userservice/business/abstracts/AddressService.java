@@ -11,11 +11,8 @@ import java.util.UUID;
 
 public interface AddressService {
     List<GetAllAddressesResponse> getAll();
-
     GetAddressResponse getById(UUID id);
-
-
     Address createAddress(CreateAddressRequest request);
-    void deleteOwnerForAddress(User user, UUID addresId);
+    void deleteOwnerForAddress(User user, UUID addressId);
 
 }

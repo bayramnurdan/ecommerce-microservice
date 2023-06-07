@@ -20,5 +20,4 @@ public class GetAllInvoicesResponse {
 
     private LocalDateTime OrderedAt;
     private double totalAmount;
-    private String cardHolder;
 }

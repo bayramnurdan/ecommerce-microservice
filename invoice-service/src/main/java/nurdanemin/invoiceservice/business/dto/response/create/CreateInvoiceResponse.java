@@ -20,5 +20,4 @@ public class CreateInvoiceResponse {
 
     private LocalDateTime OrderedAt;
     private double totalAmount;
-    private String cardHolder;
 }
