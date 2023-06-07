@@ -1,5 +1,6 @@
 package nurdanemin.filterservice.business.abstracts;
 
+import nurdanemin.commonpackage.events.catalog.ProductQuantityUpdatedEvent;
 import nurdanemin.filterservice.business.dto.responses.GetAllFiltersResponse;
 import nurdanemin.filterservice.business.dto.responses.GetFilterResponse;
 import nurdanemin.filterservice.entities.Filter;
@@ -14,6 +15,7 @@ public interface FilterService {
 
     void add(Filter filter);
     List<GetAllFiltersResponse> getByBrandName(String brandName);
+    void updateAmount(ProductQuantityUpdatedEvent event);
 
 
 

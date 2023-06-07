@@ -12,6 +12,7 @@ import nurdanemin.catalogservice.business.dto.response.update.UpdateProductRespo
 import nurdanemin.catalogservice.business.rules.ProductBusinessRules;
 import nurdanemin.catalogservice.entities.Category;
 import nurdanemin.catalogservice.entities.Product;
+import nurdanemin.commonpackage.events.catalog.ProductQuantityUpdatedEvent;
 import nurdanemin.commonpackage.utils.enums.ProductState;
 import nurdanemin.catalogservice.repository.ProductRepository;
 import nurdanemin.commonpackage.events.catalog.ProductCreatedEvent;
@@ -105,7 +106,8 @@ public class ProductManager implements ProductService {
         Product product = repository.findById(productId).orElseThrow();
         product.setAmount(product.getAmount()+updateAmount);
         setProductState(product);
-        repository.save(product);
+        Product savedproduct = repository.save(product);
+        sendKafkaProductAmountUpdatedEvent(savedproduct);
 
     }
 
@@ -135,6 +137,12 @@ public class ProductManager implements ProductService {
         event.setCategoryIds(CommonMethods.getItemsAsUUIDSet(createdProduct.getCategories()));
         event.setCategoryNames(mapCategoriesToNameSet(createdProduct));
         producer.sendMessage(event, "product-created");
+    }
+    private void sendKafkaProductAmountUpdatedEvent(Product product){
+        ProductQuantityUpdatedEvent event = new ProductQuantityUpdatedEvent();
+        event.setProductId(product.getId());
+        event.setQuantity(product.getAmount());
+        producer.sendMessage(event, "product-amount-updated");
     }
 
 }

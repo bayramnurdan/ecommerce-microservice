@@ -3,6 +3,7 @@ package nurdanemin.filterservice.business.kafka.consumer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import nurdanemin.commonpackage.events.catalog.ProductCreatedEvent;
+import nurdanemin.commonpackage.events.catalog.ProductQuantityUpdatedEvent;
 import nurdanemin.commonpackage.utils.mappers.ModelMapperService;
 import nurdanemin.filterservice.business.abstracts.FilterService;
 import nurdanemin.filterservice.entities.Filter;
@@ -27,5 +28,14 @@ public class CatalogConsumer {
         filter.setCategoryNames(event.getCategoryNames());
         service.add(filter);
         log.info("Product created event consumed {}", event);
+    }
+
+    @KafkaListener(
+            topics = "product-amount-updated",
+            groupId = "product-amount-update"
+    )
+    public void consume(ProductQuantityUpdatedEvent event) {
+        service.updateAmount(event);
+        log.info("Product updated event consumed {}", event);
     }
 }

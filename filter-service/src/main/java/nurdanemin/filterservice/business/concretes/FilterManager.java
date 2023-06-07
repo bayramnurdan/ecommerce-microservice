@@ -1,6 +1,7 @@
 package nurdanemin.filterservice.business.concretes;
 
 import lombok.AllArgsConstructor;
+import nurdanemin.commonpackage.events.catalog.ProductQuantityUpdatedEvent;
 import nurdanemin.commonpackage.utils.mappers.ModelMapperService;
 import nurdanemin.filterservice.business.abstracts.FilterService;
 import nurdanemin.filterservice.business.dto.responses.GetAllFiltersResponse;
@@ -46,6 +47,13 @@ public class FilterManager implements FilterService {
                 .stream()
                 .map(filter-> mapper.forResponse().map(filter, GetAllFiltersResponse.class))
                 .toList();
+    }
+
+    @Override
+    public void updateAmount(ProductQuantityUpdatedEvent event) {
+        Filter filter = repository.getByProductId(event.getProductId());
+        filter.setAmount(event.getQuantity());
+        repository.save(filter);
     }
 
 }
