@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
+
 @Service
 @AllArgsConstructor
 public class FilterManager implements FilterService {
@@ -27,10 +28,11 @@ public class FilterManager implements FilterService {
     }
 
     @Override
-    public GetFilterResponse getById(String id) {
-       var filter = repository.findById(id);
+    public GetFilterResponse getByProductId(UUID id) {
+        Filter filter = repository.getByProductId(id);
         return mapper.forResponse().map(filter, GetFilterResponse.class);
     }
+
 
     @Override
     public void add(Filter filter) {
@@ -39,25 +41,11 @@ public class FilterManager implements FilterService {
     }
 
     @Override
-    public void delete(String id) {
-        repository.deleteById(id);
-
+    public List<GetAllFiltersResponse> getByBrandName(String brandName) {
+        return repository.getAllByBrandNameIgnoreCase(brandName)
+                .stream()
+                .map(filter-> mapper.forResponse().map(filter, GetAllFiltersResponse.class))
+                .toList();
     }
 
-    @Override
-    public void deleteByProductId(UUID productId) {
-        repository.deleteByProductId(productId);
-
-    }
-
-    @Override
-    public void deleteAllByBrandId(UUID brandId) {
-        repository.deleteAllByBrandId(brandId);
-
-    }
-
-    @Override
-    public Filter getByCarId(UUID productId) {
-       return repository.getByProductId(productId);
-    }
 }

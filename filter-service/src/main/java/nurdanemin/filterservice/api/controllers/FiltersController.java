@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
@@ -21,8 +22,13 @@ public class FiltersController {
     public List<GetAllFiltersResponse> getAll(){return service.getAll();
     }
 
-    @GetMapping("/{id}")
-    public GetFilterResponse getById(@PathVariable String id) {
-        return service.getById(id);
-    }
+    @GetMapping("/{productId}")
+    public GetFilterResponse getByProductId(@PathVariable UUID productId) {
+        return service.getByProductId(productId);}
+
+    @GetMapping("/get-by-brand/{brandName}")
+    public List<GetAllFiltersResponse> getByBrandName(@PathVariable String brandName) {
+        return service.getByBrandName(brandName);}
+
+
 }

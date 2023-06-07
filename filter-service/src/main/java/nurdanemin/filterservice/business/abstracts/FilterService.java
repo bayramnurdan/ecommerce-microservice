@@ -10,16 +10,11 @@ import java.util.UUID;
 public interface FilterService {
     List<GetAllFiltersResponse> getAll();
 
-    GetFilterResponse getById(String id);
+    GetFilterResponse getByProductId(UUID id);
 
     void add(Filter filter);
-
-    void delete(String id);
-
-    void deleteByProductId(UUID productId);
+    List<GetAllFiltersResponse> getByBrandName(String brandName);
 
 
-    void deleteAllByBrandId(UUID brandId);
 
-    Filter getByCarId(UUID carId);
 }
